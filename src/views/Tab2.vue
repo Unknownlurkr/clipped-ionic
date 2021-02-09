@@ -6,6 +6,14 @@
       </ion-toolbar>
     </ion-header>
 <ion-content :fullscreen="true">
+    <ion-grid>
+    <ion-row>
+      <ion-col size="6" :key="photo" v-for="photo in photos">
+        <ion-img :src="photo.webviewPath"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button @click="takePhoto()">
       <ion-icon :icon="camera"></ion-icon>
@@ -16,6 +24,7 @@
 </template>
 
 <script lang="ts">
+
 import {usePhotoGallery} from '@/composables/usePhotoGallery';
 import { camera, trash, close } from 'ionicons/icons';
 import { IonPage, IonHeader, IonFab, IonFabButton, IonIcon, 
@@ -26,9 +35,10 @@ export default  {
   components: { IonPage, IonHeader, IonFab, IonFabButton, IonIcon, 
          IonToolbar, IonTitle, IonContent},
   setup() {
-    const { takePhoto } = usePhotoGallery();
+    const { photos, takePhoto } = usePhotoGallery();
 
     return {
+      photos,
       takePhoto,
       camera, trash, close
     }

@@ -3,7 +3,7 @@ import { images, square, triangle } from 'ionicons/icons';
 <template>
   <ion-page>
     <ion-tabs>
-      <ion-tab-bar  slot="bottom">
+      <ion-tab-bar @slot="bottom">
         <ion-tab-button tab="tab1" href="/tabs/tab1">
           <ion-icon :icon="triangle" />
           <ion-label>Brittany</ion-label>
