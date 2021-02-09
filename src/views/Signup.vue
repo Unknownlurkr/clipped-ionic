@@ -44,7 +44,6 @@
 import { IonPage, IonCard, IonItem, IonLabel, IonButton, IonInput, alertController, IonIcon } from '@ionic/vue'
 import { logIn, personAdd } from 'ionicons/icons';
 import { mapActions, mapGetters } from "vuex"
-
 export default {
   name: 'Signup',
   components: { IonPage, IonCard, IonItem, IonLabel, IonButton, IonInput, IonIcon },
