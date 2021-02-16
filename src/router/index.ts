@@ -33,6 +33,15 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {
+    path: '/comments',
+    component: () => import('@/views/Comment.vue')
+  },
+  {
+    path: '/vids',
+    component: () => import('@/views/Vids.vue')
+  },
+  
+  {
     path: '/login',
     component: SignIn,
     meta: {

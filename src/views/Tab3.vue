@@ -1,5 +1,5 @@
 <template>
-<link rel="stylesheet" href="./main.css">
+
   <ion-page>
     <ion-header>
       <ion-toolbar>
@@ -17,9 +17,10 @@
       <ion-card-content>
         <img class="profile photo" height="100" width="100" src="../Images/Default.png" />
         <h2>UserName</h2>
-      
       </ion-card-content>
-      
+      <div class = "followers"><p>Followers : 0</p></div>
+      <div class = "following"><p>Following : 0</p></div>
+      <div class = "description"><p>This is the default desc</p></div>
     </ion-content>
     
   </ion-page>

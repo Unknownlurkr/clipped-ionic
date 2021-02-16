@@ -4,6 +4,7 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>Photo Gallery</ion-title>
+         <ion-button color="dark" slot="end" href="/vids">Videos</ion-button>
       </ion-toolbar>
     </ion-header>
 <ion-content :fullscreen="true">
@@ -15,18 +16,19 @@
     </ion-row>
   </ion-grid>
 
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="center" slot:="fixed">
     <ion-fab-button @click="takePhoto()">
       <ion-icon :icon="camera"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+  <ExploreContainer name="Tab 2 page" />
 </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
 
-import {usePhotoGallery} from '@/composables/usePhotoGallery';
+import {usePhotoGallery} from '@/composables/usePhotoGallery';  
 import { camera, trash, close } from 'ionicons/icons';
 import { IonPage, IonHeader, IonFab, IonFabButton, IonIcon, 
          IonToolbar, IonTitle, IonContent} from '@ionic/vue';

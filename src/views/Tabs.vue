@@ -1,4 +1,4 @@
-import { images, square, triangle } from 'ionicons/icons';
+import { images, triangle } from 'ionicons/icons';
 
 <template>
   <ion-page>
@@ -15,8 +15,8 @@ import { images, square, triangle } from 'ionicons/icons';
 </ion-tab-button>
         
         <ion-tab-button tab="tab3" href="/tabs/tab3">
-          <ion-icon :icon="square" />
-          <ion-label>Jordan</ion-label>
+          <img class="profile photo" height="22" width="22" src="../Images/Default.png" />
+          <ion-label>Profile</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
@@ -25,7 +25,7 @@ import { images, square, triangle } from 'ionicons/icons';
 
 <script lang="ts">
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage } from '@ionic/vue';
-import {images, square, triangle } from 'ionicons/icons';
+import {images, triangle } from 'ionicons/icons';
 
 export default {
   name: 'Tabs',
@@ -33,7 +33,7 @@ export default {
   setup() {
     return {
       images, 
-      square, 
+       
       triangle,
     }
   }
