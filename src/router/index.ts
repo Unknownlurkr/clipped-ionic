@@ -33,6 +33,11 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {
+    path: '/vids',
+    component: () => import('@/views/Vids.vue')
+  },
+  
+  {
     path: '/login',
     component: SignIn,
     meta: {
