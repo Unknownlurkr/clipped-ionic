@@ -4,6 +4,7 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>Photo Gallery</ion-title>
+         <ion-button color="dark" slot="end" href="/vids">Videos</ion-button>
       </ion-toolbar>
     </ion-header>
 <ion-content :fullscreen="true">

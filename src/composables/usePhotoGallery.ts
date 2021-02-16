@@ -37,7 +37,7 @@ export function usePhotoGallery() {
          photos.value = photosInStorage;
      }
      
-     onMounted(loadSaved);
+    //  onMounted(loadSaved);
 
     const savePicture = async(photo: CameraPhoto, fileName: string): Promise<Photo> => {
     
