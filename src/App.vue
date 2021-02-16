@@ -14,9 +14,7 @@ export default defineComponent({
   name: 'App',
   components: {
     IonApp,
-    IonRouterOutlet,
-    
-    
+    IonRouterOutlet
   }
 });
 </script>
