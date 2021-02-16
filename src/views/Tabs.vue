@@ -6,7 +6,7 @@ import { images, square, triangle } from 'ionicons/icons';
       <ion-tab-bar @slot="bottom">
         <ion-tab-button tab="tab1" href="/tabs/tab1">
           <ion-icon :icon="triangle" />
-          <ion-label>Brittany</ion-label>
+          <ion-label>Explore</ion-label>
         </ion-tab-button>
           
 <ion-tab-button tab="tab2" href="/tabs/tab2">
