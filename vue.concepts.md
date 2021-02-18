@@ -1,3 +1,37 @@
+# **Syntax**
+
+> Putting this information first in an attempt to set up some logical structure to the documentation; feedback welcome on structure!
+> - Pteropticon
+
+## v-bind and v-on shorthand syntax
+
+The v- prefix in Vue directives is a visual indicator that a Vue template attribute is being used. For
+simplicity, Vue provides shorthands for the commonly used v-bind and v-on directives.
+The v-bind directive can be shortened with the : symbol:
+
+// the full syntax
+
+```html <img v-bind:src="submission.submissionImage" />```
+
+// the shorthand syntax
+
+```html <img :src="submission.submissionImage" /> ```
+
+And the v-on directive can be shortened with the @ symbol:
+
+// the full syntax
+
+```html <span v-on:click="upvote(submission.id)"></span> ```
+
+// the shorthand syntax
+
+```html<span @click="upvote(submission.id)"></span>```
+
+This shorthand syntax is completely optional but allows us to use the v-bind and v-on directives
+without explicitly typing out the full syntax.
+
+
+
 # __*Parts of a Vue Component*__
 
 # 1. *Template*
@@ -25,7 +59,8 @@
 
 # 2. *Script*
 
-> - Define functions under the **computed** property to be called in the HTML markup
+> Define functions under the **computed** property to be called in the HTML markup
+> - Pteropticon
 ```javascript
 
 <script>
@@ -62,6 +97,9 @@ export default {
 
 
 # 3. *Styling*
+
+> Literally the same as a normal stylesheet, just embedded in the .Vue file underneath the script section
+> - Pteropticon
 
 ```css
 <style lang="scss" scoped>
@@ -125,9 +163,5 @@ to mutate parent state directly.
 
 ## Between Siblings
 
-#### ----------- With Vue.observable ---------------
+===============================================================================
 
-    >   The solution:
-     To achieve communication between components we will use Vue.observable. which can be used as a minimal, cross-component state store for simple scenarios.
-
-  
