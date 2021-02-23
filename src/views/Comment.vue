@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="container-comment">
     <CalendarWeek />
     <CalendarEntry />
   </div>
@@ -19,14 +19,15 @@ export default {
 </script>
 
 <style lang="scss">
-html, body {
-  height: 100%;
+ body {
+   
+  height: inherit;
 }
 </style>
 
 <style lang="scss" scoped>
-#app {
-  height: inherit;
+#container-comment {
+  height: 1px;
   background: #6e6e6e;
   display: flex;
   flex-direction: column;
@@ -34,5 +35,6 @@ html, body {
   -webkit-align-items: center;
   justify-content: center;
   -webkit-justify-content: center;
+  float: right;
 }
 </style>
