@@ -29,6 +29,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'tab3',
         component: () => import('@/views/Tab3.vue')
+      },
+      {
+        path: 'feed',
+        component: () => import('@/views/feed.vue')
       }
     ]
   },

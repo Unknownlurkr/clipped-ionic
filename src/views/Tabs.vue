@@ -19,6 +19,12 @@ import { images, triangle } from 'ionicons/icons';
           <ion-label>Profile</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
+       <ion-tab-bar @slot="bottom">
+        <ion-tab-button tab="feed" href="/tabs/feed">
+          <ion-icon :icon="images" />
+          <ion-label>Feed</ion-label>
+        </ion-tab-button>
+       </ion-tab-bar>
     </ion-tabs>
   </ion-page>
 </template>
@@ -32,8 +38,7 @@ export default {
   components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage },
   setup() {
     return {
-      images, 
-       
+      images,  
       triangle,
     }
   }

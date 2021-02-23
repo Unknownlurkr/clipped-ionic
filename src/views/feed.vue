@@ -18,7 +18,8 @@
                     <ion-title slot="start">Clipped</ion-title>
                     <ion-searchbar slot="primary" show-cancel-button="focus" cancel-button-text="Custom Cancel" id="header-search-vids">
                     </ion-searchbar>
-        <ion-title>Explore Page</ion-title>
+        <ion-title>Your Feed!
+        </ion-title>
         <ion-buttons @slot="primary">
           <ion-button color="secondary" @click="handleSignOut">
             <ion-icon @slot="icon-only" :icon="logOut"></ion-icon>
@@ -32,39 +33,15 @@
           <ion-title size="large">Explore other content</ion-title>
         </ion-toolbar>
       </ion-header>
-<ion-card class="ion-activated" id="explore-vid">
-                <ion-card-header>
-                    <ion-card-subtitle>Clipped Creator</ion-card-subtitle>
-                    <ion-card-title>Epic Video, yeah!</ion-card-title>
-                </ion-card-header>
-                <ion-card-content id="explore-vid">
-                  When you make a meme to make a meme
-                </ion-card-content>
-                    <ion-card>
-                            <ion-item>
-                              <ion-icon :icon="pin" slot="start"></ion-icon>
-                               
-                              <ion-label></ion-label>
-                            </ion-item>
-                    </ion-card>
-
-
-            </ion-card>
       <ion-title>{{msg}}</ion-title>
       <ExploreContainer name="Explore" />
     </ion-content>
   </ion-page>
 </template>
 <style lang="css">
-#explore-vid{
-    background: #4854e0;
-    display: flex;
-    
-
-}
 </style>
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons, IonButton,IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonItem, IonLabel, IonAvatar,  } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons, IonButton  } from '@ionic/vue';
 import { warning } from 'ionicons/icons';
 import { logOut } from 'ionicons/icons';
 import ExploreContainer from '@/components/ExploreContainer.vue';
@@ -73,10 +50,10 @@ import { useRouter } from 'vue-router';
 
 export default  {
   name: 'Tab1',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonIcon, IonButtons, IonButton, IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonItem, IonLabel },
+  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonIcon, IonButtons, IonButton},
   data() {
     return {
-      msg: "Explore other content!"
+      msg: "What is new!"
     }
   },
   setup() {
