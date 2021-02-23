@@ -40,3 +40,5 @@ Now, Brittany will outline:
 	ASAP. Refreshing the page will clear that. Returning to tab 2 and clicking on the videos button at the top right will take us to
 	our prototype video player with comment module. Here you can see some mockup with basic styling that essentially makes up one
 	of our testing grounds for learning Ionic/Vue, and specifically rendering in multiple user defined components. 
+
+	
