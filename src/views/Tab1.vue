@@ -1,7 +1,24 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar>
+        <ion-toolbar color="dark">
+                    <ion-buttons slot="secondary">
+                        <ion-button>
+                            <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
+                        </ion-button>
+                        <ion-button>
+                            <ion-icon slot="icon-only" :icon="search"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                    <ion-buttons slot="primary">
+                        <ion-button color="danger">
+                            <ion-icon slot="icon-only" :ios="ellipsisHorizontal" :md="ellipsisVertical"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                    <ion-title slot="start">Clipped</ion-title>
+                    <ion-searchbar slot="primary" show-cancel-button="focus" cancel-button-text="Custom Cancel"
+                        id="header-search-vids">
+                    </ion-searchbar>
         <ion-title>Explore Page</ion-title>
         <ion-buttons @slot="primary">
           <ion-button color="secondary" @click="handleSignOut">
@@ -17,12 +34,11 @@
         </ion-toolbar>
       </ion-header>
 <ion-card class="ion-activated" id="explore-vid">
-  
                 <ion-card-header>
-                    <ion-card-subtitle>Clippe Creator</ion-card-subtitle>
+                    <ion-card-subtitle>Clipped Creator</ion-card-subtitle>
                     <ion-card-title>Epic Video, yeah!</ion-card-title>
                 </ion-card-header>
-                <ion-card-content>
+                <ion-card-content id="explore-vid">
                   When you make a meme to make a meme
                 </ion-card-content>
                     <ion-card>
@@ -40,7 +56,14 @@
     </ion-content>
   </ion-page>
 </template>
+<style lang="css">
+#explore-vid{
+    background: #4854e0;
+    display: flex;
+    
 
+}
+</style>
 <script lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons, IonButton,IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonItem, IonLabel, IonAvatar,  } from '@ionic/vue';
 import { warning } from 'ionicons/icons';
