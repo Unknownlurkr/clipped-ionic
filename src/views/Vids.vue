@@ -5,7 +5,7 @@
                 <ion-toolbar color="dark">
                     <ion-buttons slot="secondary">
                         <ion-button>
-                            <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
+                            <ion-icon slot="icon-only" href="/" :icon="personCircle"></ion-icon>
                         </ion-button>
                         <ion-button>
                             <ion-icon slot="icon-only" :icon="search"></ion-icon>
@@ -16,7 +16,10 @@
                             <ion-icon slot="icon-only" :ios="ellipsisHorizontal" :md="ellipsisVertical"></ion-icon>
                         </ion-button>
                     </ion-buttons>
-                    <ion-title slot="start">Clipped</ion-title>
+                    <ion-title @click="returnHome"  slot="start">Clipped</ion-title>
+                    
+                
+                    
                     <ion-searchbar slot="primary" show-cancel-button="focus" cancel-button-text="Custom Cancel"
                         id="header-search-vids">
                     </ion-searchbar>
@@ -30,11 +33,12 @@
                     <ion-card-subtitle>Clipped</ion-card-subtitle>
                     <ion-card-title>Epic Video, yeah!</ion-card-title>
                 </ion-card-header>
-                <comment></comment>
             </ion-card>
+
+                  <!-- <comment></comment> -->
+
+            
             <ion-list>
-
-
                 <ion-item>
                     <ion-avatar slot="start">
                         <img src="../../public/assets/images/avatars/face1.png">
@@ -48,10 +52,10 @@
 
                 <ion-item>
                     <ion-avatar slot="start">
-                        <img src="../../public/assets/images/avatars/face1.png">
+                        <img src="../../public/assets/images/avatars/Face2.png">
                     </ion-avatar>
                     <ion-label>
-                        <h2>Han</h2>
+                        <h2>V</h2>
                         <h3>Look, kid...</h3>
                         <p>I've got enough on my plate as it is, and I...</p>
                     </ion-label>
@@ -59,12 +63,12 @@
 
                 <ion-item>
                     <ion-avatar slot="start">
-                        <img src="../../public/assets/images/avatars/face1.png">
+                        <img src="../../public/assets/images/avatars/Face3.png">
                     </ion-avatar>
                     <ion-label>
-                        <h2>Rey</h2>
+                        <h2>Arthur</h2>
                         <h3>I can handle myself</h3>
-                        <p>You will remove these restraints and leave...</p>
+                        <p>I'm gonna count to 3 partner</p>
                     </ion-label>
                 </ion-item>
             </ion-list>
@@ -94,16 +98,22 @@ import {
 } from '@ionic/vue';
 
 // import 'vuetify/dist/vuetify.min.css'
-import { 
-  ellipsisHorizontal,
-  ellipsisVertical, 
-  helpCircle, 
-  personCircle, 
-  search, 
-  star
+import {
+    ellipsisHorizontal,
+    ellipsisVertical,
+    helpCircle,
+    personCircle,
+    search,
+    star
 } from 'ionicons/icons';
 
 import Comment from "./Comment.vue";
+import {
+
+    useRouter
+} from 'vue-router';
+
+
 
 export default {
     name: 'Vids',
@@ -114,7 +124,7 @@ export default {
         IonTitle,
         IonContent,
         IonCard,
-        Comment,
+        // Comment,
         IonIcon,
         IonButton,
         IonSearchbar,
@@ -124,16 +134,24 @@ export default {
         IonCardTitle,
         IonList
     },
-      setup() {
-    return {
-      ellipsisHorizontal,
-      ellipsisVertical, 
-      helpCircle, 
-      personCircle, 
-      search, 
-      star
+    setup() {
+        const router = useRouter();
+        return {
+            router,
+            ellipsisHorizontal,
+            ellipsisVertical,
+            helpCircle,
+            personCircle,
+            search,
+            star
+        };
+    },
+    methods: {
+        returnHome() {
+            console.log("fuck");
+            
+        }
     }
-  }
 }
 
 </script>

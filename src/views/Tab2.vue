@@ -31,20 +31,23 @@
 import {usePhotoGallery} from '@/composables/usePhotoGallery';  
 import { camera, trash, close } from 'ionicons/icons';
 import { IonPage, IonHeader, IonFab, IonFabButton, IonIcon, 
-         IonToolbar, IonTitle, IonContent} from '@ionic/vue';
+         IonToolbar, IonTitle, IonContent} from '@ionic/vue'; 
 
 export default  {
   name: 'Tab2',
   components: { IonPage, IonHeader, IonFab, IonFabButton, IonIcon, 
          IonToolbar, IonTitle, IonContent},
   setup() {
+
+
     const { photos, takePhoto } = usePhotoGallery();
 
     return {
       photos,
       takePhoto,
       camera, trash, close
-    }
+    };
   }
+
 }
 </script>
