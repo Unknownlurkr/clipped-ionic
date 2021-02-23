@@ -24,3 +24,19 @@ Now, Brittany will outline:
 	This is trumendously useful given the scope of our project. This leaves us more time to sort out design, our own upcoming sorting 
 	algorithms, and perhaps most substantially learning Ionic and Vue frameworks themselves alongside the hundreds of interconnected
 	dependencies that Ionic is built upon.
+
+	The vast majority of our development time has been spent on learning the aforementioned intracacies of the Ionic Framework
+	(and not to mention Vue). As such, we have not had been able to totally implement important backend features like authentication
+	and CRUD. We are partially in the implementation phase regarding authentication, but still figuring out how to properly
+	connect OAuth2, Axios and CRUD operations to the Ionic framework. The reason for the delay includes many reasons, but one example 
+	is properly implementing interceptor functions in order to
+	catch HTTP responses to a request, so that Ionic & Vue can dynamically render the appropriate page for whatever response the
+	server/backend returns in any given instance. If we return to page 1, we can see at the top left an icon that takes us to our 
+	Sign-in and Sign-up page. This design is tentative and while a great deal of the necessary functionality has been coded, 
+	the authentication is not actually connected to a Mongo cluser at this point, so clicking sign up does not actually query a database
+	at this point. 
+
+	Now, hitting the back button on the browser and returning to our tab layout will print out some HTML. Just another bug we'll be fixing
+	ASAP. Refreshing the page will clear that. Returning to tab 2 and clicking on the videos button at the top right will take us to
+	our prototype video player with comment module. Here you can see some mockup with basic styling that essentially makes up one
+	of our testing grounds for learning Ionic/Vue, and specifically rendering in multiple user defined components. 

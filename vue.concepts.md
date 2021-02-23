@@ -159,7 +159,7 @@ reference data directly from parent components. For a child component to access 
 simplifies the understanding of an applications data flow since child components will never be able
 to mutate parent state directly.
 
-![GitHub Logo](public\assets\images\documentation\vue-components.png)
+![Components](public\assets\images\documentation\vue-components.png)
 
 ## Between Siblings
 
