@@ -1,0 +1,26 @@
+Product Owner - Brittany
+
+Overall, Brittany will outline 
+	What went well in the Sprint:
+	What could be improved:
+	What will we commit to improve in the next Sprint:
+
+Now, Brittany will outline:
+	What she should start doing
+	What she should stop doing
+	What she should continue doing
+
+	PRESENTATION NOTES, DO WITH THIS WHAT YOU WILL
+
+	We decided to use Ionic with Vue for our app. The main reason for using the Ionic Framework is because it suits our needs perfectly;
+	It offers some very unique functionality that is priceless when approaching development from a progressive webapp
+	perspective. For example, Capacitor (a part of the Ionic framework)
+	is a cross-platform native runtime that makes it easy to build modern web apps that run natively on iOS, Android, and the Web.
+	We can mostly obviously demonstrate the usefulness of this tool via the 2nd tab view, photos. Here you see, after clicking this partially
+	hidden blue button just above the bottom tab header, is an interface that 
+	exposes the API of Capacitor Camera (as well as the filesystem API, behind the scenes). Depending on the OS currently being run on,
+	Capacitor will automatically interact with the native functionality of each OS. So simply by utilizng up this complex algorithm
+	for our webapp, we can rest easy knowning that most of the work involved with porting to mobile platforms is taken care of for us.
+	This is trumendously useful given the scope of our project. This leaves us more time to sort out design, our own upcoming sorting 
+	algorithms, and perhaps most substantially learning Ionic and Vue frameworks themselves alongside the hundreds of interconnected
+	dependencies that Ionic is built upon.
