@@ -242,3 +242,21 @@ This is where the advantage of using **Vuex**, the Flux-like library for state m
 
 # Veux!! (library for state mgmt)
 
+## Based on the Flux design pattern created by Facebook and the great Zuck :snake:
+
+===============================================
+
+Flux is a design pattern created by Facebook. The Flux pattern is made up of four parts, organized
+as a one-way data pipeline:
+
+![flux pipeline](.\public\assets\images\documentation\statemgmt\flux-pipeline.png)
+
+## Key Ideas of Vuex:
+
+- All of our application's data is in a single data structure called the __state__, which is held in the __store__
+- Our app reads the __state__ from this __store__
+- The __state__ is never mutated directly outside the __store__
+- The __views__ dispatch __actions__ that describe what happened
+- The __actions__ commit to __mutations__
+- __Mutations__ directly mutate/c hange store state
+- When the __state__ is mutated, relevant components/views are re-rendered
