@@ -35,9 +35,11 @@
                         </ion-card>
                     </ion-col>
                     <ion-col>
-                        <static-list-ex></static-list-ex>
-                        <!-- <comment></comment> -->
+                        <comment></comment>
                     </ion-col>
+                </ion-row>
+                <ion-row>
+                    <static-list-ex></static-list-ex>
                 </ion-row>
             </ion-grid>
             
@@ -61,7 +63,10 @@ import {
     IonCardHeader,
     IonCardTitle,
     IonSearchbar,
-    IonCardSubtitle
+    IonCardSubtitle,
+    IonGrid,
+    IonRow,
+    IonCol
 
 } from '@ionic/vue';
 
@@ -75,8 +80,8 @@ import {
     star
 } from 'ionicons/icons';
 
-import Comment from "./Comment.vue";
 
+import Comment from "../components/comment/Comment.vue";
 import StaticListEx from "../components/StaticListEx.vue";
 
 import {
@@ -96,14 +101,17 @@ export default {
         IonContent,
         IonCard,
         StaticListEx,
-       //Comment,
+        Comment,
         IonIcon,
         IonButton,
         IonSearchbar,
         IonCardSubtitle,
         IonButtons,
         IonCardHeader,
-        IonCardTitle
+        IonCardTitle,
+        IonGrid,
+        IonRow,
+        IonCol
     },
     setup() {
         const router = useRouter();
@@ -120,7 +128,7 @@ export default {
     methods: {
         returnHome() {
             console.log("fuck");
-            
+
         }
     }
 }
