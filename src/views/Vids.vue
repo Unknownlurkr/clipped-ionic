@@ -16,10 +16,7 @@
                             <ion-icon slot="icon-only" :ios="ellipsisHorizontal" :md="ellipsisVertical"></ion-icon>
                         </ion-button>
                     </ion-buttons>
-                    <ion-title @click="returnHome"  slot="start">Clipped</ion-title>
-                    
-                
-                    
+                    <ion-title @click="returnHome" slot="start">Clipped</ion-title>
                     <ion-searchbar slot="primary" show-cancel-button="focus" cancel-button-text="Custom Cancel"
                         id="header-search-vids">
                     </ion-searchbar>
@@ -27,18 +24,18 @@
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
-
-            <ion-card class="ion-activated" id="vid-detail">
-                <ion-card-header>
-                    <ion-card-subtitle>Clipped</ion-card-subtitle>
-                    <ion-card-title>Epic Video, yeah!</ion-card-title>
-                </ion-card-header>
-            </ion-card>
-
-                  <!-- <comment></comment> -->
-
-            
-            <ion-list>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="8">
+                        <ion-card class="ion-activated" id="vid-detail">
+                            <ion-card-header>
+                                <ion-card-subtitle>Clipped</ion-card-subtitle>
+                                <ion-card-title>Epic Video, yeah!</ion-card-title>
+                            </ion-card-header>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col>
+                                    <ion-list>
                 <ion-item>
                     <ion-avatar slot="start">
                         <img src="../../public/assets/images/avatars/face1.png">
@@ -72,6 +69,10 @@
                     </ion-label>
                 </ion-item>
             </ion-list>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <!-- <comment></comment> -->
 
         </ion-content>
     </ion-page>
@@ -166,19 +167,18 @@ ion-content{
 
 #header-search-vids {
     width: 90%;
-    left: 0;
-    right: 0;
+
     float: right;
 
 }
 
 #vid-detail {
     background-color: rgba(109, 36, 36, 0.767);
-      left: 0;
+    left: 0;
   right: 0;
   top: 50%;
-  width: 60%;
-  height: 75%;
+  width: 100%; 
+  height: 700px;
   transform: translateY(-50%);
 
 }
