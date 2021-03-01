@@ -35,48 +35,16 @@
                         </ion-card>
                     </ion-col>
                     <ion-col>
-                                    <ion-list>
-                <ion-item>
-                    <ion-avatar slot="start">
-                        <img src="../../public/assets/images/avatars/face1.png">
-                    </ion-avatar>
-                    <ion-label>
-                        <h2>Finn</h2>
-                        <h3>I'm a big deal</h3>
-                        <p>Listen, I've had a pretty messed up day...</p>
-                    </ion-label>
-                </ion-item>
-
-                <ion-item>
-                    <ion-avatar slot="start">
-                        <img src="../../public/assets/images/avatars/Face2.png">
-                    </ion-avatar>
-                    <ion-label>
-                        <h2>V</h2>
-                        <h3>Look, kid...</h3>
-                        <p>I've got enough on my plate as it is, and I...</p>
-                    </ion-label>
-                </ion-item>
-
-                <ion-item>
-                    <ion-avatar slot="start">
-                        <img src="../../public/assets/images/avatars/Face3.png">
-                    </ion-avatar>
-                    <ion-label>
-                        <h2>Arthur</h2>
-                        <h3>I can handle myself</h3>
-                        <p>I'm gonna count to 3 partner</p>
-                    </ion-label>
-                </ion-item>
-            </ion-list>
+                        <static-list-ex></static-list-ex>
+                        <!-- <comment></comment> -->
                     </ion-col>
                 </ion-row>
             </ion-grid>
-            <!-- <comment></comment> -->
+            
 
         </ion-content>
-    </ion-page>
-</template>
+        </ion-page>
+        </template>
 
 <script lang="ts">
 
@@ -93,8 +61,7 @@ import {
     IonCardHeader,
     IonCardTitle,
     IonSearchbar,
-    IonCardSubtitle,
-    IonList
+    IonCardSubtitle
 
 } from '@ionic/vue';
 
@@ -109,6 +76,9 @@ import {
 } from 'ionicons/icons';
 
 import Comment from "./Comment.vue";
+
+import StaticListEx from "../components/StaticListEx.vue";
+
 import {
 
     useRouter
@@ -125,15 +95,15 @@ export default {
         IonTitle,
         IonContent,
         IonCard,
-        // Comment,
+        StaticListEx,
+       //Comment,
         IonIcon,
         IonButton,
         IonSearchbar,
         IonCardSubtitle,
         IonButtons,
         IonCardHeader,
-        IonCardTitle,
-        IonList
+        IonCardTitle
     },
     setup() {
         const router = useRouter();
@@ -158,29 +128,22 @@ export default {
 </script>
 
 <style scoped>
-
-ion-content{
-
-    --ion-background-color:#111D12;
     
+ion-content{
+    --ion-background-color:#111D12;
 }
-
 #header-search-vids {
     width: 90%;
-
     float: right;
-
 }
 
 #vid-detail {
     background-color: rgba(109, 36, 36, 0.767);
     left: 0;
-  right: 0;
-  top: 50%;
-  width: 100%; 
-  height: 700px;
-  transform: translateY(-50%);
-
+    right: 0;
+    top: 50%;
+    width: 100%; 
+    height: 700px;
+    transform: translateY(-50%);
 }
-
 </style>
