@@ -1,16 +1,22 @@
-//Pass in string as first PARAM to represent what we are testing (usually component name)
-describe('Component Name', () => {
-
-    test('Component does something fantastic', () => {
-
-        //Arrange (configuration and setup of test)
-        const component = { click: () => {"Ree"} }
-        // Act (execution of actions to change the state)
-        component.click()
-
-        // Assert (check if state is as it should be)
-        expect(component).toContain("Ree")
-    })
+// Import the `mount()` method from Vue Test Utils
+import { mount } from '@vue/test-utils'
+import { test, expect } from "@vue/test-utils";
 
 
+// The component to test
+const MessageComponent = {
+  template: '<p>{{ msg }}</p>',
+  props: ['msg']
+}
+
+test('displays message', () => {
+  // mount() returns a wrapped Vue component we can interact with
+  const wrapper = mount(MessageComponent, {
+    propsData: {
+      msg: 'Hello world'
+    }
+  })
+
+  // Assert the rendered text of the component
+  expect(wrapper.text()).toContain('Hello world')
 })
