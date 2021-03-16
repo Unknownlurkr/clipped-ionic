@@ -5,14 +5,14 @@
                 <ion-toolbar color="dark">
                     <ion-buttons slot="secondary">
                         <ion-button>
-                            <ion-icon slot="icon-only" href="/" :icon="personCircle"></ion-icon>
+                            <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
                         </ion-button>
                         <ion-button>
                             <ion-icon slot="icon-only" :icon="search"></ion-icon>
                         </ion-button>
                     </ion-buttons>
                     <ion-buttons slot="primary">
-                        <ion-button color="danger">
+                        <ion-button href="/testArea" color="danger">
                             <ion-icon slot="icon-only" :ios="ellipsisHorizontal" :md="ellipsisVertical"></ion-icon>
                         </ion-button>
                     </ion-buttons>
@@ -35,11 +35,11 @@
                         </ion-card>
                     </ion-col>
                     <ion-col>
-                        <comment></comment>
+                        <static-list-ex></static-list-ex>
                     </ion-col>
                 </ion-row>
                 <ion-row>
-                    <static-list-ex></static-list-ex>
+                    <!-- <comment></comment> -->
                 </ion-row>
             </ion-grid>
             
@@ -101,7 +101,7 @@ export default {
         IonContent,
         IonCard,
         StaticListEx,
-        Comment,
+        //Comment,
         IonIcon,
         IonButton,
         IonSearchbar,
