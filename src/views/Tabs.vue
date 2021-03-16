@@ -13,7 +13,7 @@ import { images, triangle } from 'ionicons/icons';
           <ion-label>Photos</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="tab3" href="/tabs/feed">
+        <ion-tab-button tab="tab3" href="/tabs/tab3">
           <img class="profile photo" height="22" width="22" src="../Images/Default.png" />
           <ion-label>Profile</ion-label>
         </ion-tab-button>
