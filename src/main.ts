@@ -1,6 +1,6 @@
 import {defineCustomElements} from '@ionic/pwa-elements/loader';
 
-import { createApp } from 'vue'
+import { createApp, provide} from 'vue'
 import App from './App.vue'
 import router from './router';
 import ApiService from './services/api.service';

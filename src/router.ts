@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import Tabs from '../views/Tabs.vue';
-import SignIn from "../views/Signin.vue";
-import SignUp from "../views/Signup.vue";
+import Tabs from '@/views/Tabs.vue';
+import SignIn from "@/views/Signin.vue";
+import SignUp from "@/views/Signup.vue";
+import AddProduct from "@/views/AddProduct.vue";
+import Home  from "@/views/Home.vue";
 import { TokenService } from "@/services/token.service";
 
 const routes: Array<RouteRecordRaw> = [
@@ -37,11 +39,23 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {
+    path: "/home",
+    name: "Home",
+    component: Home
+  },
+  {
+    path: "/add-product",
+    name: "AddProduct",
+    component: AddProduct
+  },
+  {
     path: '/vids',
+    name: "Videos",
     component: () => import('@/views/Vids.vue')
   },
   {
     path: '/testarea',
+    name: "TestArea",
     component: () => import('@/components/TestArea.vue')
   },
   
