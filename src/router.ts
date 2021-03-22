@@ -6,7 +6,7 @@ import Home  from "@/views/Home.vue";
 import UserLogin from "@/views/UserLogin.vue";
 import UserCreate from "@/views/UserCreate.vue";
 import ChangePassword from "@/views/ChangePassword.vue";
-import { TokenService } from "@/services/token.service";
+// import { TokenService } from "@/services/token.service";
 import  dataService  from "./dataservice.js";
 
 const routes: Array<RouteRecordRaw> = [
@@ -99,11 +99,17 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
 
 router.beforeEach((to, from, next) => {
-
+  console.log("testing beforeEach call");
+  
     const { hasUser } = dataService();
+
+    console.log(`Has User:`, hasUser());
+    console.log();
+    
+    
 
     if(to.meta.requiresAuth && !hasUser()) {
       next("/login");
@@ -135,4 +141,4 @@ router.beforeEach((to, from, next) => {
 //   next();
 // });
 
-export default router
+export default router;

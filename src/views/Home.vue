@@ -28,6 +28,11 @@
         </ion-item>
       </ion-list>
     </ion-content>
+    <ion-footer class="ion-text-center">
+      <ion-button @click="doLogout" fill="clear">
+        LOGOUT
+      </ion-button>
+    </ion-footer>
   </ion-page>
 </template>
 
@@ -42,6 +47,7 @@ import {
   IonList,
   IonButtons,
   IonButton,
+  IonFooter
 } from "@ionic/vue";
 
 import { useRouter } from "vue-router";
@@ -59,6 +65,7 @@ export default {
     IonList,
     IonButtons,
     IonButton,
+    IonFooter
   },
   ionViewDidEnter() {
     console.log("Home page did enter");
@@ -72,6 +79,7 @@ export default {
       productList,
       removeProduct,
       loadProducts,
+      logout
     } = dataService();
 
     /**
@@ -86,11 +94,17 @@ export default {
       loadProducts();
     };
 
+    const doLogout = async () => {
+      await logout();
+      router.replace("/login");
+    };
+
     return {
       addProduct,
       productList,
       displayError,
       deleteProduct,
+      doLogout
     };
   },
 };

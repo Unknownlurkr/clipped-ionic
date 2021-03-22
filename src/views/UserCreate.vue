@@ -14,10 +14,10 @@
             </ion-item>
                         <ion-item>
                 <ion-label>Password</ion-label>
-                <ion-input type="password" v-model="creds.psddeotf"></ion-input>
+                <ion-input type="password" v-model="creds.password"></ion-input>
             </ion-item>
             <div class="ion-padding">
-                <ion-button @click="doCreateAccount" expand="block">Login</ion-button>
+                <ion-button @click="doCreateAccount" expand="block">Create Account</ion-button>
                 <ion-button 
                     @click="router.push('/login')"
                      expand="block"

@@ -3,7 +3,7 @@
 
         <ion-content :fullscreen="true" class="ion-padding">
             <div class="ion-padding" style="padding-top:42px; padding-bottom:32px;">
-                <ion-img :src="logo"></ion-img>
+                <ion-img :src="logo" class="logo-clipped"></ion-img>
             </div>
             <ion-item>
                 <ion-label>Email</ion-label>
@@ -21,7 +21,7 @@
 
                      fill="clear"
                      >Create Account</ion-button>
-                >
+                
             </div>
         </ion-content>
         <ion-footer class="ion-text-center">
@@ -34,7 +34,7 @@
 
 <script>
 
-// import logo from "@/assets/icon/logo-clipped.png";
+import logo from "../../public/assets/icon/logo-clipped.png"
 import {IonContent,
 IonPage, 
 IonItem,
@@ -45,9 +45,8 @@ IonButton,
 IonFooter
 } from "@ionic/vue";
 import { useRouter } from "vue-router";
-import {
-    ref
-} from "vue"
+import { ref } from "vue";
+import {login} from "../dataservice";
 
 export default ({
     name: "UserLogin",
@@ -72,6 +71,13 @@ export default ({
         const doLogin = async () => {
             const { email, password } = creds.value;
             alert(`doLogin: ${email}  ${password}`);
+            
+            try {
+                const { user, e } = await login(email, password);
+                 if(user) router.replace("/home");
+            } catch (e) {
+                alert(e.message);
+            }
         };
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         const doForgotPassword = async () => {
@@ -81,13 +87,16 @@ export default ({
             creds,
             doLogin,
             doForgotPassword,
-            router
-            // logo
+            router,
+            logo
         };
     },
 }) 
 </script>
 
 <style lang="scss" scoped>
-
+    .logo-clipped{
+        width: 10%;
+        height: 10%;
+    }
 </style>
