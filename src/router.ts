@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import Tabs from '@/views/Tabs.vue';
-import SignIn from "@/views/Signin.vue";
-import SignUp from "@/views/Signup.vue";
 import AddProduct from "@/views/AddProduct.vue";
 import Home  from "@/views/Home.vue";
+import UserLogin from "@/views/UserLogin.vue";
+import UserCreate from "@/views/UserCreate.vue";
+import ChangePassword from "@/views/ChangePassword.vue";
 import { TokenService } from "@/services/token.service";
+import  dataService  from "./dataservice.js";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -46,8 +48,25 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/add-product",
     name: "AddProduct",
-    component: AddProduct
+    component: AddProduct,
+    meta: { requiresAuth: true} 
   },
+  {
+    path: "/login",
+    component: UserLogin,
+    meta: { requiresAuth: false}
+  },
+  {
+    path: "/create-account",
+     component: UserCreate,
+      meta: { requiresAuth: false} 
+  },
+  {
+    path: "/change-password",
+     component: ChangePassword,
+      meta: { requiresAuth: false} 
+  },
+
   {
     path: '/vids',
     name: "Videos",
@@ -57,30 +76,42 @@ const routes: Array<RouteRecordRaw> = [
     path: '/testarea',
     name: "TestArea",
     component: () => import('@/components/TestArea.vue')
-  },
-  
-  {
-    path: '/login',
-    component: SignIn,
-    meta: {
-      public: true,
-      onlyWhenLoggedOut: true
-    }
-  },
-  {
-    path: '/signup',
-    component: SignUp,
-    meta: {
-      public: true,
-      onlyWhenLoggedOut: true
-    }
   }
+  
+  // {
+  //   path: '/login',
+  //   component: SignIn,
+  //   meta: {
+  //     public: true,
+  //     onlyWhenLoggedOut: true
+  //   }
+  // },
+  // {
+  //   path: '/signup',
+  //   component: SignUp,
+  //   meta: {
+  //     public: true,
+  //     onlyWhenLoggedOut: true
+  //   }
+  // }
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+
+    const { hasUser } = dataService();
+
+    if(to.meta.requiresAuth && !hasUser()) {
+      next("/login");
+    } else {
+      next();
+    }
+
+});
 
 //THIS ADDS A CHECK AT TO EACH CALL TO THE ROUTER. COMMENTING OUT BECAUSE OAUTH AUTHENTICATION IS BROKEN AF
 

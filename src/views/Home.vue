@@ -17,8 +17,8 @@
               {{ p.name }} <span>${{ p.list_price / 100 }}</span> -
               <span>${{ p.sale_price / 100 || 0 }}</span>
             </h2>
-            <h4>{{ p.description }}</h4>
-            <p>{{ p.category }}</p>
+            <h4>"{{ p.description }}" - some fashion reviewer</h4>
+            <p>Category: {{ p.category }}</p>
             <p>
               <ion-button color="danger" @click="deleteProduct(p.id)"
                 >DELETE</ion-button

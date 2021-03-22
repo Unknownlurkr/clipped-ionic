@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { SUPABASE_CLIENT } from "./supabase-config";
+import  SUPABASE_CLIENT  from "./supabase-config";
 console.log(SUPABASE_CLIENT);
 
 const productList = ref();
@@ -42,7 +42,8 @@ const dataService = () => {
     // FUNCTIONS
     saveProducts,
     productList,
-    removeProduct
+    removeProduct,
+    hasUser : () => false
   };
 };
 export default dataService;

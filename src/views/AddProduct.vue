@@ -22,11 +22,11 @@
         <ion-input type="text" v-model="formData.description"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Price</ion-label>
+        <ion-label>Regular Price: $</ion-label>
         <ion-input type="number" v-model="formData.list_price"></ion-input>
       </ion-item>
         <ion-item>
-        <ion-label>Price</ion-label>
+        <ion-label>Sales Price: $</ion-label>
         <ion-input type="number" v-model="formData.sale_price"></ion-input>
       </ion-item>
       <ion-item>
