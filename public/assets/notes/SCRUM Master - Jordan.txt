@@ -1,6 +1,42 @@
 SCRUM Master - Jordan
 
+Overall, We have
+
+what went well
+	authentication
+	setting up database
+	creating individual pages
+	spreading work amoungst the group
+	CRUD
+
+what could be improved
+	communitcation
+	
+what we will commit to improve in the next sprint
+	working harder to get more done
+	
+
 Now, Jordan will outline:
-	What he should start doing
-	What he should stop doing
-	What he should continue doing 
+
+What he should start doing
+	making sure everyone is on the same page
+	getting more hours in
+
+
+What he should stop doing
+	procrastinating
+
+What he should continue doing 
+	researching
+	working on the assignment
+
+Individual Summary
+	Reasearch
+	Working on the profile page 
+
+	
+Group Summary
+	Learning about the db
+	doing research for what we all need and sharing useful information with others
+	working on pages and nav bar
+	CRUD
