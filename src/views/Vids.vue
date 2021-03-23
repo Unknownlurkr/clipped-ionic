@@ -4,11 +4,11 @@
             <ion-toolbar>
                 <ion-toolbar color="dark">
                     <ion-buttons slot="secondary">
-                        <ion-button>
-                            <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
+                        <ion-button href="/tabs" color="">
+                            <ion-icon slot="icon-only" :icon="appsSharp"></ion-icon>
                         </ion-button>
-                        <ion-button>
-                            <ion-icon slot="icon-only" :icon="search"></ion-icon>
+                        <ion-button href="/home" color="success">
+                            <ion-icon slot="icon-only" :icon="homeOutline"></ion-icon>
                         </ion-button>
                     </ion-buttons>
                     <ion-buttons slot="primary">
@@ -77,7 +77,9 @@ import {
     helpCircle,
     personCircle,
     search,
-    star
+    star,
+    homeOutline,
+    appsSharp
 } from 'ionicons/icons';
 
 
@@ -122,7 +124,9 @@ export default {
             helpCircle,
             personCircle,
             search,
-            star
+            star,
+            homeOutline,
+            appsSharp
         };
     },
     methods: {
