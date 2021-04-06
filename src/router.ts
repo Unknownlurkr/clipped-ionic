@@ -12,7 +12,7 @@ import  dataService  from "./dataservice.js";
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: '/tabs/feed'
   },
   {
     path: '/tabs/',
@@ -20,11 +20,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '',
-        redirect: '/tabs/tab1'
-      },
-      {
-        path: 'tab1',
-        component: () => import('@/views/Tab1.vue')
+        redirect: '/tabs/feed'
       },
       {
         path: 'tab2',
