@@ -1,27 +1,7 @@
 <template>
     <ion-page>
         <ion-header>
-            <ion-toolbar>
-                <ion-toolbar color="dark">
-                    <ion-buttons slot="secondary">
-                        <ion-button href="/tabs" color="">
-                            <ion-icon slot="icon-only" :icon="appsSharp"></ion-icon>
-                        </ion-button>
-                        <ion-button href="/home" color="success">
-                            <ion-icon slot="icon-only" :icon="homeOutline"></ion-icon>
-                        </ion-button>
-                    </ion-buttons>
-                    <ion-buttons slot="primary">
-                        <ion-button href="/testArea" color="danger">
-                            <ion-icon slot="icon-only" :ios="ellipsisHorizontal" :md="ellipsisVertical"></ion-icon>
-                        </ion-button>
-                    </ion-buttons>
-                    <ion-title @click="returnHome" slot="start">Clipped</ion-title>
-                    <ion-searchbar slot="primary" show-cancel-button="focus" cancel-button-text="Custom Cancel"
-                        id="header-search-vids">
-                    </ion-searchbar>
-                </ion-toolbar>
-            </ion-toolbar>
+            <clipped-header></clipped-header>
         </ion-header>
         <ion-content :fullscreen="true">
             <ion-grid>
@@ -42,27 +22,21 @@
                     <!-- <comment></comment> -->
                 </ion-row>
             </ion-grid>
-            
+
 
         </ion-content>
-        </ion-page>
-        </template>
+    </ion-page>
+</template>
 
 <script lang="ts">
 
 import {
     IonPage,
     IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     IonCard,
-    IonIcon,
-    IonButton,
-    IonButtons,
     IonCardHeader,
     IonCardTitle,
-    IonSearchbar,
     IonCardSubtitle,
     IonGrid,
     IonRow,
@@ -90,6 +64,7 @@ import {
 
     useRouter
 } from 'vue-router';
+import ClippedHeader from './ClippedHeader.vue';
 
 
 
@@ -98,35 +73,27 @@ export default {
     components: {
         IonPage,
         IonHeader,
-        IonToolbar,
-        IonTitle,
         IonContent,
         IonCard,
         StaticListEx,
         //Comment,
-        IonIcon,
-        IonButton,
-        IonSearchbar,
         IonCardSubtitle,
-        IonButtons,
         IonCardHeader,
         IonCardTitle,
         IonGrid,
         IonRow,
-        IonCol
+        IonCol,
+        ClippedHeader
     },
     setup() {
         const router = useRouter();
         return {
             router,
-            ellipsisHorizontal,
             ellipsisVertical,
             helpCircle,
             personCircle,
             search,
             star,
-            homeOutline,
-            appsSharp
         };
     },
     methods: {

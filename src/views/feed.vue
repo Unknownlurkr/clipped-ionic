@@ -1,32 +1,8 @@
 <template>
   <ion-page>
     <ion-header>
-        <ion-toolbar color="dark">
-                    <ion-buttons slot="secondary">
-                        <ion-button>
-                            <ion-icon slot="icon-only" :icon="personCircle"></ion-icon>
-                        </ion-button>
-                        <ion-button>
-                            <ion-icon slot="icon-only" :icon="search"></ion-icon>
-                        </ion-button>
-                    </ion-buttons>
-                    <ion-buttons slot="primary">
-                        <ion-button color="danger">
-                            <ion-icon slot="icon-only" :ios="ellipsisHorizontal" :md="ellipsisVertical"></ion-icon>
-                        </ion-button>
-                    </ion-buttons>
-                    <ion-title slot="start">Clipped</ion-title>
-                    <ion-searchbar slot="primary" show-cancel-button="focus" cancel-button-text="Custom Cancel" id="header-search-vids">
-                    </ion-searchbar>
-        <ion-title>Your Feed!
-        </ion-title>
-        <ion-buttons @slot="primary">
-          <ion-button color="secondary" @click="handleSignOut">
-            <ion-icon @slot="icon-only" :icon="logOut"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header> 
+      <clipped-header></clipped-header>
+    </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
@@ -38,22 +14,27 @@
     </ion-content>
   </ion-page>
 </template>
+
 <style lang="css">
+
 </style>
+
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons, IonButton  } from '@ionic/vue';
+
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons } from '@ionic/vue';
 import { warning } from 'ionicons/icons';
 import { logOut } from 'ionicons/icons';
 import ExploreContainer from '@/components/ExploreContainer.vue';
 import {mapActions} from "vuex";
 import { useRouter } from 'vue-router';
+import ClippedHeader from './ClippedHeader.vue';
 
 export default  {
   name: 'Tab1',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonIcon, IonButtons, IonButton},
+  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, ClippedHeader},
   data() {
     return {
-      msg: "What is new!"
+      msg: "Injecting data on load, nice!"
     }
   },
   setup() {
@@ -64,6 +45,7 @@ export default  {
       warning
     };
   },
+  
   methods: {
     ...mapActions("auth", ["signOut"]),
     ...mapActions("home", ["loadSecretArea"]),
