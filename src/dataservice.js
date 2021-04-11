@@ -70,13 +70,19 @@ const login = async (email, password) => {
 };
 
 const logout = async () => {
-  const { user, error } = await SupabaseClient.auth.logout();
+  const { error } = await SUPABASE_CLIENT.auth.signOut();
   console.log(error && error.message);
-  return { user, error };
+  return error;
 };
 
 const createAccount = async (email, password) => {
   console.log(email, password);
+  const { user, error } = await SUPABASE_CLIENT.auth.signUp({
+    email,
+    password
+  });
+  console.log(error && error.message);
+  return { user, error };
 } 
 
 const forgotPassword = async (email) => {

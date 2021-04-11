@@ -14,7 +14,7 @@ import CalendarDay from './CalendarDay.vue';
 
 export default {
   name: 'CalendarWeek',
-  data () {``
+  setup () {
     return {
       sharedState: store.state
     }

@@ -2,10 +2,10 @@
               <ion-toolbar>
                 <ion-toolbar color="dark">
                     <ion-buttons slot="secondary">
-                        <ion-button href="/tabs" color="">
+                        <ion-button href="/home" color="">
                             <ion-icon slot="icon-only" :icon="appsSharp"></ion-icon>
                         </ion-button>
-                        <ion-button href="/home" color="success">
+                        <ion-button href="/tabs" color="success">
                             <ion-icon slot="icon-only" :icon="homeOutline"></ion-icon>
                         </ion-button>
                     </ion-buttons>

@@ -1,27 +1,25 @@
 <template>
-  <div id="test-area-container">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-3">
-          <CartList />
-        </div>
-        <div class="column is-9">
-          <ProductList />
-        </div>
-      </div>
-    </div>
-  </div>
+  <ion-page>
+
+          <CalendarWeek/>
+          <CalendarEntry/>
+
+  </ion-page>
 </template>
 
 <script>
-import CartList from './cart/CartList';
-import ProductList from './product/ProductListItem'
+
+import CalendarWeek from './CalendarWeek.vue';
+import CalendarEntry from './CalendarEntry.vue';
+import { IonPage} from "@ionic/vue";
 
 export default {
   name: 'TestArea',
   components: {
-    CartList,
-    ProductList
+    CalendarWeek,
+    CalendarEntry,
+    IonPage,
+
   }
 };
 </script>
@@ -34,7 +32,6 @@ body {
 
 #test-area-container {
   height: 100%;
-  display: flex;
   align-items: center;
   justify-content: center;
 }

@@ -43,13 +43,9 @@
         IonToolbar
 
     } from "@ionic/vue";
-import {
-    useRouter
-} from "vue-router";
-import {
-    ref
-} from "vue"
-
+    import { useRouter } from "vue-router";
+    import { ref } from "vue"
+    import dataService from "../dataservice";
 export default ({
     name: "UserCreate",
     components: {
@@ -68,10 +64,20 @@ export default ({
             email: "",
             password: ""
         });
+        const { createAccount } = dataService();
 
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
+       
         const doCreateAccount = async () => {
-            alert("doCreateAccount");
+            const { email, password } = creds.value;
+            console.log(`Creating Account with : ${email}  ${password}`);
+            
+            try {
+                const { user, error } = await createAccount(email, password);
+                 if(user) router.replace("/home");
+                 if(error) throw error;
+            } catch (e) {
+                alert(e.message);
+            }
         };
         return {
             creds,

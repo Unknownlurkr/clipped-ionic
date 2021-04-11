@@ -73,8 +73,9 @@ export default ({
             alert(`doLogin: ${email}  ${password}`);
             
             try {
-                const { user, e } = await login(email, password);
+                const { user, error } = await login(email, password);
                  if(user) router.replace("/home");
+                 if(error) throw error;
             } catch (e) {
                 alert(e.message);
             }

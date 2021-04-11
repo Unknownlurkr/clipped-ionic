@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import { IonicVue } from '@ionic/vue';
 import { seedData } from './seed.js';
 
 export const store = {
@@ -18,7 +18,9 @@ export const store = {
     return dayObj.events.find(event => event.details === eventDetails);
   },
   submitEvent (eventDetails) {
+    console.log("CUck");
     const activeDay = this.getActiveDay();
+    console.log(activeDay);
     activeDay.events.push({ "details": eventDetails, "edit": false });
   },
   editEvent (dayId, eventDetails) {

@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>Supabase.io CRUD Testing</ion-title>
+        <clipped-header></clipped-header>
         <ion-buttons slot="end">
           <ion-button @click="addProduct">ADD PRODUCT</ion-button>
         </ion-buttons>
@@ -52,6 +52,7 @@ import {
 
 import { useRouter } from "vue-router";
 import dataService from ".././dataservice.js"
+import ClippedHeader from './ClippedHeader.vue';
 
 export default {
   name: "Home",
@@ -59,7 +60,7 @@ export default {
     IonContent,
     IonHeader,
     IonPage,
-    IonTitle,
+    ClippedHeader,
     IonToolbar,
     IonItem,
     IonList,
