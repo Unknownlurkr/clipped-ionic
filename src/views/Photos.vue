@@ -4,7 +4,10 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>Photo Gallery</ion-title>
+        <ion-buttons></ion-buttons>
          <ion-button color="dark" slot="end" href="/vids">Videos</ion-button>
+         <ion-button slot="end" @click="openSignInModal">Modal</ion-button>
+         <ion-button slot="end" color="favorite" href="/login">Sign In</ion-button>
       </ion-toolbar>
     </ion-header>
 <ion-content :fullscreen="true">
@@ -31,15 +34,15 @@
 import {usePhotoGallery} from '@/composables/usePhotoGallery';  
 import { camera, trash, close } from 'ionicons/icons';
 import { IonPage, IonHeader, IonFab, IonFabButton, IonIcon, 
-         IonToolbar, IonTitle, IonContent} from '@ionic/vue'; 
+         IonToolbar, IonTitle, IonContent, modalController} from '@ionic/vue'; 
+         import Modal from './modal.vue'
 
 export default  {
-  name: 'Tab2',
+  name: 'Photos',
   components: { IonPage, IonHeader, IonFab, IonFabButton, IonIcon, 
-         IonToolbar, IonTitle, IonContent},
+         IonToolbar, IonTitle, IonContent },
+
   setup() {
-
-
     const { photos, takePhoto } = usePhotoGallery();
 
     return {
@@ -47,7 +50,25 @@ export default  {
       takePhoto,
       camera, trash, close
     };
-  }
+  },
+  methods: {
+    async openSignInModal() {
+      const modal = await modalController
+      .create({
+        component: Modal,
+        cssClass: 'my-custom-class',
+        componentProps: {
+          title: "New Title"
+        },
+      })
+      return modal.present();
+    }
+  },
 
 }
 </script>
+
+<style lang="sass" scoped>
+
+
+</style>

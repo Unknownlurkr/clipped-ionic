@@ -23,12 +23,12 @@ const routes: Array<RouteRecordRaw> = [
         redirect: '/tabs/feed',
       },
       {
-        path: 'tab2',
-        component: () => import('@/views/Tab2.vue')
+        path: 'Photos',
+        component: () => import('@/views/Photos.vue')
       },
       {
-        path: 'tab3',
-        component: () => import('@/views/Tab3.vue')
+        path: 'profile',
+        component: () => import('@/views/Profile.vue')
       },
       {
         path: 'feed',
