@@ -61,7 +61,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/change-password",
      component: ChangePassword,
-      meta: { requiresAuth: false} 
+      meta: { requiresAuth: true} 
   },
 
   {
@@ -104,15 +104,13 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log("testing beforeEach call");
     const { hasUser } = dataService();
-
     console.log(`Has User:`, hasUser());
-    console.log();
-    
-    
-
-    if(to.meta.requiresAuth && !hasUser()) {
+    debugger;
+    //if path we're trying to go to has index of type=recover on the end...
+    if (to.fullPath.indexOf("type=recovery") != -1) {
+      next("/change-password");
+    } else if (to.meta.requiresAuth && !hasUser()) {
       next("/login");
     } else {
       next();

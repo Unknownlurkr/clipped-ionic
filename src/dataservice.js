@@ -105,8 +105,13 @@ const forgotPassword = async (email) => {
 } 
 
 const changePassword = async (password) => {
-  console.log(password);
-} 
+  const { user, error } = await SUPABASE_CLIENT.auth.update({
+    password,
+    data: { passwordUpdated: new Date() }
+  })
+  console.log(error && error.message);
+  return { user, error };
+};
 
   return {
     // PROPERTIES
