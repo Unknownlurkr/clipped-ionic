@@ -1,5 +1,4 @@
 <template>
-
   <ion-page>
     <form @submit.prevent="handleLogin">
       <ion-card>
@@ -33,21 +32,43 @@
         </ion-item>
       </ion-card>
     </form>
-
   </ion-page>
-
 </template>
 
 <script lang="ts">
-import Tabs from '../views/Tabs.vue';
-import { IonPage, IonCard, IonItem, IonLabel, IonButton, IonInput, alertController, IonIcon } from '@ionic/vue'
-import { logIn, personAdd} from 'ionicons/icons';
-import { mapActions, mapGetters } from "vuex"
-import { useRouter } from 'vue-router';
+import {
+  IonPage,
+  IonCard,
+  IonItem,
+  IonLabel,
+  IonButton,
+  IonInput,
+  alertController,
+  IonIcon
+} from '@ionic/vue'
+import {
+  logIn,
+  personAdd
+} from 'ionicons/icons';
+import {
+  mapActions,
+  mapGetters
+} from "vuex"
+import {
+  useRouter
+} from 'vue-router';
 
 export default {
   name: 'SignIn',
-  components: { IonPage, IonCard, IonItem, IonLabel, IonButton, IonInput, IonIcon },
+  components: {
+    IonPage,
+    IonCard,
+    IonItem,
+    IonLabel,
+    IonButton,
+    IonInput,
+    IonIcon
+  },
   setup() {
     const router = useRouter();
     return {
@@ -80,12 +101,12 @@ export default {
         this.router.push("/tabs/tab1")
       }).catch(async (err: any) => {
         const errorAlert = await alertController
-            .create({
-              header: 'Failed',
-              subHeader: 'Sign in Failed',
-              message: err,
-              buttons: ['OK'],
-            });
+          .create({
+            header: 'Failed',
+            subHeader: 'Sign in Failed',
+            message: err,
+            buttons: ['OK'],
+          });
         await errorAlert.present()
       })
     }

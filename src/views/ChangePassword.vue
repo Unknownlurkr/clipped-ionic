@@ -16,12 +16,8 @@
         <ion-input type="password" v-model="creds.password2"></ion-input>
       </ion-item>
       <div class="ion-padding">
-        <ion-button @click="doChangePassword" expand="block"
-          >SAVE CHANGES</ion-button
-        >
-        <ion-button @click="router.back()" expand="block" fill="clear"
-          >CANCEL</ion-button
-        >
+        <ion-button @click="doChangePassword" expand="block">SAVE CHANGES</ion-button>
+        <ion-button @click="router.back()" expand="block" fill="clear">CANCEL</ion-button>
       </div>
     </ion-content>
   </ion-page>
@@ -39,8 +35,12 @@ import {
   IonInput,
   IonButton
 } from "@ionic/vue";
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import {
+  ref
+} from "vue";
+import {
+  useRouter
+} from "vue-router";
 import dataService from "../dataservice";
 export default {
   name: "Home",
@@ -57,19 +57,27 @@ export default {
   },
   setup() {
     const router = useRouter();
-    const { changePassword } = dataService();
+    const {
+      changePassword
+    } = dataService();
     const creds = ref({
       password1: "",
       password2: ""
     });
     const doChangePassword = async () => {
       try {
-        const { password1, password2 } = creds.value;
+        const {
+          password1,
+          password2
+        } = creds.value;
         if (password1 != password2) {
           alert("Passwords Don't Match");
           return;
         }
-        const { user, error } = await changePassword(password1);
+        const {
+          user,
+          error
+        } = await changePassword(password1);
         if (user) router.replace("/Feed");
         if (error) throw error;
         alert("Password Changed");
@@ -87,4 +95,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

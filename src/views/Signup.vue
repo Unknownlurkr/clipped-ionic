@@ -41,12 +41,35 @@
 </template>
 
 <script lang="ts">
-import { IonPage, IonCard, IonItem, IonLabel, IonButton, IonInput, alertController, IonIcon } from '@ionic/vue'
-import { logIn, personAdd } from 'ionicons/icons';
-import { mapActions, mapGetters } from "vuex"
+import {
+  IonPage,
+  IonCard,
+  IonItem,
+  IonLabel,
+  IonButton,
+  IonInput,
+  alertController,
+  IonIcon
+} from '@ionic/vue'
+import {
+  logIn,
+  personAdd
+} from 'ionicons/icons';
+import {
+  mapActions,
+  mapGetters
+} from "vuex"
 export default {
   name: 'Signup',
-  components: { IonPage, IonCard, IonItem, IonLabel, IonButton, IonInput, IonIcon },
+  components: {
+    IonPage,
+    IonCard,
+    IonItem,
+    IonLabel,
+    IonButton,
+    IonInput,
+    IonIcon
+  },
   setup() {
     return {
       logIn,
@@ -78,7 +101,7 @@ export default {
           username: this.form.username,
           password: this.form.password
         };
-        this.signup(registerUser).then(async() => {
+        this.signup(registerUser).then(async () => {
           const alert = await alertController
             .create({
               header: 'Success',
@@ -95,12 +118,12 @@ export default {
         })
       } else {
         const errorAlert = await alertController
-            .create({
-              header: 'Failed',
-              subHeader: 'Signup Failed',
-              message: 'You are not fill the form completely.',
-              buttons: ['OK'],
-            });
+          .create({
+            header: 'Failed',
+            subHeader: 'Signup Failed',
+            message: 'You are not fill the form completely.',
+            buttons: ['OK'],
+          });
         await errorAlert.present
       }
     },

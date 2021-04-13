@@ -1,6 +1,5 @@
 <template>
     <ion-page>
-
         <ion-content :fullscreen="true" class="ion-padding">
             <div class="ion-padding" style="padding-top:42px; padding-bottom:32px;">
                 <ion-img :src="logo" class="logo-clipped"></ion-img>
@@ -9,19 +8,14 @@
                 <ion-label>Email</ion-label>
                 <ion-input type="email" v-model="creds.email"></ion-input>
             </ion-item>
-                        <ion-item>
+            <ion-item>
                 <ion-label>Password</ion-label>
                 <ion-input type="password" v-model="creds.password"></ion-input>
             </ion-item>
             <div class="ion-padding">
                 <ion-button @click="doLogin" expand="block">Login</ion-button>
-                <ion-button 
-                    @click="router.push('/create-account')"
-                     expand="block"
-
-                     fill="clear"
-                     >Create Account</ion-button>
-                
+                <ion-button @click="router.push('/create-account')" expand="block" fill="clear">Create Account
+                </ion-button>
             </div>
         </ion-content>
         <ion-footer class="ion-text-center">
@@ -35,17 +29,22 @@
 <script>
 
 import logo from "../../public/assets/icon/logo-clipped.png"
-import {IonContent,
-IonPage, 
-IonItem,
-IonLabel,
-IonInput,
-IonImg,
-IonButton,
-IonFooter
+import {
+    IonContent,
+    IonPage,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonImg,
+    IonButton,
+    IonFooter
 } from "@ionic/vue";
-import { useRouter } from "vue-router";
-import { ref } from "vue";
+import {
+    useRouter
+} from "vue-router";
+import {
+    ref
+} from "vue";
 import dataService from "../dataservice";
 
 export default ({
@@ -89,8 +88,8 @@ export default ({
                 if (user) router.replace("/vids");
                 if (error) throw error;
             } catch (e) {
-                if(e.message != null) alert(e.message);
-                
+                if (e.message != null) alert(e.message);
+
             }
         };
         // eslint-disable-next-line @typescript-eslint/no-empty-function

@@ -8,7 +8,6 @@
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-
     <ion-content :fullscreen="true" class="ion-padding">
       <ion-list>
         <ion-item v-for="p in productList" :key="p.id">
@@ -20,9 +19,7 @@
             <h4>"{{ p.description }}" - some fashion reviewer</h4>
             <p>Category: {{ p.category }}</p>
             <p>
-              <ion-button color="danger" @click="deleteProduct(p.id)"
-                >DELETE</ion-button
-              >
+              <ion-button color="danger" @click="deleteProduct(p.id)">DELETE</ion-button>
             </p>
           </div>
         </ion-item>
@@ -41,7 +38,6 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonTitle,
   IonToolbar,
   IonItem,
   IonList,
@@ -50,7 +46,9 @@ import {
   IonFooter
 } from "@ionic/vue";
 
-import { useRouter } from "vue-router";
+import {
+  useRouter
+} from "vue-router";
 import dataService from ".././dataservice.js"
 import ClippedHeader from './ClippedHeader.vue';
 
@@ -70,7 +68,9 @@ export default {
   },
   ionViewDidEnter() {
     console.log("Home page did enter");
-    const { loadProducts } = dataService();
+    const {
+      loadProducts
+    } = dataService();
     loadProducts();
   },
   setup() {

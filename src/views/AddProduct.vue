@@ -25,7 +25,7 @@
         <ion-label>Regular Price: $</ion-label>
         <ion-input type="number" v-model="formData.list_price"></ion-input>
       </ion-item>
-        <ion-item>
+      <ion-item>
         <ion-label>Sales Price: $</ion-label>
         <ion-input type="number" v-model="formData.sale_price"></ion-input>
       </ion-item>
@@ -58,8 +58,12 @@ import {
   IonSelectOption,
 } from "@ionic/vue";
 
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import {
+  ref
+} from "vue";
+import {
+  useRouter
+} from "vue-router";
 import dataService from ".././dataservice.js"
 export default {
   name: "Home",
@@ -80,7 +84,9 @@ export default {
   },
   setup() {
     const router = useRouter();
-    const { saveProducts } = dataService();
+    const {
+      saveProducts
+    } = dataService();
 
     const formData = ref({
       name: "",

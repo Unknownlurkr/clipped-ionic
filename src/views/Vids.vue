@@ -22,8 +22,6 @@
                     <!-- <comment></comment> -->
                 </ion-row>
             </ion-grid>
-
-
         </ion-content>
     </ion-page>
 </template>
