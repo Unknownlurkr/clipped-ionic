@@ -46,6 +46,7 @@
     import { useRouter } from "vue-router";
     import { ref } from "vue"
     import dataService from "../dataservice";
+
 export default ({
     name: "UserCreate",
     components: {
@@ -59,21 +60,30 @@ export default ({
         IonToolbar
     },
     setup() {
+        //get reference to router to use for redirect later
         const router = useRouter();
+        
+        //instantiate email and password Strings for subsequent use
         const creds = ref({
             email: "",
             password: ""
         });
+
         const { createAccount } = dataService();
 
-       
         const doCreateAccount = async () => {
             const { email, password } = creds.value;
-            console.log(`Creating Account with : ${email}  ${password}`);
-            
+            alert(`Calling create account method in dataService.js with: ${email} and inputted password `);
             try {
+                /**
+                 * invoke createAccount call to Supabase backend and
+                 * destructure user and error return values from createAccount function call in dataservice.js
+                */
                 const { user, error } = await createAccount(email, password);
-                 if(user) router.replace("/home");
+
+                //if sign in successful and therefore user != empty
+                 if(user) router.replace("/vids");
+                 //otherwise display the error message as defined by the Supabase API
                  if(error) throw error;
             } catch (e) {
                 alert(e.message);

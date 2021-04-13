@@ -1,6 +1,5 @@
 import { ref } from "vue";
 import  SUPABASE_CLIENT  from "./supabase-config";
-import { SupabaseClient } from '@supabase/supabase-js';
 
 const productList = ref();
 const displayError = ref();
@@ -65,8 +64,21 @@ const login = async (email, password) => {
     email,
     password,
   });
+  console.log(error && error.message);  
 
-  return { user, email };
+  if(error.message == null) {
+    const newErrorMessage = "Please enter a password";
+    error.message = newErrorMessage;
+  }
+
+  if (error.message == "You must provide either an email or a third-party provider.") {
+    const newErrorMessage = "You must provide an email";
+    error.message = newErrorMessage;
+
+  }
+
+  
+  return { user, error };
 };
 
 const logout = async () => {
@@ -76,7 +88,6 @@ const logout = async () => {
 };
 
 const createAccount = async (email, password) => {
-  console.log(email, password);
   const { user, error } = await SUPABASE_CLIENT.auth.signUp({
     email,
     password
@@ -86,7 +97,11 @@ const createAccount = async (email, password) => {
 } 
 
 const forgotPassword = async (email) => {
+
   console.log(email);
+  const { data, error } = await SUPABASE_CLIENT.auth.api.resetPasswordForEmail(email);
+  console.log(error && error.message);
+  return { data, error };
 } 
 
 const changePassword = async (password) => {

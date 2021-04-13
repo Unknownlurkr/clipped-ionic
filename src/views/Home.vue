@@ -3,7 +3,7 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <clipped-header></clipped-header>
-        <ion-buttons slot="end">
+        <ion-buttons @slot="end">
           <ion-button @click="addProduct">ADD PRODUCT</ion-button>
         </ion-buttons>
       </ion-toolbar>

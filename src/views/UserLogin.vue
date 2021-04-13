@@ -46,7 +46,7 @@ IonFooter
 } from "@ionic/vue";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import {login} from "../dataservice";
+import dataService from "../dataservice";
 
 export default ({
     name: "UserLogin",
@@ -61,28 +61,54 @@ export default ({
         IonFooter,
     },
     setup() {
+        //get reference to router to use for redirect later
         const router = useRouter();
+
+        //instantiate email and password Strings for subsequent use
         const creds = ref({
             email: "",
             password: ""
         });
 
+        const {
+            login,
+            forgotPassword
+        } = dataService();
+
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         const doLogin = async () => {
-            const { email, password } = creds.value;
-            alert(`doLogin: ${email}  ${password}`);
-            
             try {
-                const { user, error } = await login(email, password);
-                 if(user) router.replace("/home");
-                 if(error) throw error;
+                const {
+                    email,
+                    password
+                } = creds.value;
+                const {
+                    user,
+                    error
+                } = await login(email, password);
+                if (user) router.replace("/vids");
+                if (error) throw error;
             } catch (e) {
-                alert(e.message);
+                if(e.message != null) alert(e.message);
+                
             }
         };
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         const doForgotPassword = async () => {
-            alert("ForgotPassword")
+            alert("Executing ForgotPassword call to Supabase API");
+            const {
+                email
+            } = creds.value;
+            try {
+                const {
+                    error
+                } = await forgotPassword(email);
+                if (error) throw error;
+                alert("Check email to reset password");
+
+            } catch (e) {
+                alert(e.message);
+            }
         };
         return {
             creds,
@@ -92,7 +118,7 @@ export default ({
             logo
         };
     },
-}) 
+})
 </script>
 
 <style lang="scss" scoped>
