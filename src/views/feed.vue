@@ -21,7 +21,7 @@
 
 <script lang="ts">
 
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/vue';
 import { warning } from 'ionicons/icons';
 import { logOut } from 'ionicons/icons';
 import ExploreContainer from '@/components/ExploreContainer.vue';
@@ -30,7 +30,7 @@ import { useRouter } from 'vue-router';
 import ClippedHeader from './ClippedHeader.vue';
 
 export default  {
-  name: 'Tab1',
+  name: 'Feed',
   components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, ClippedHeader},
   data() {
     return {
@@ -46,22 +46,22 @@ export default  {
     };
   },
   
-  methods: {
-    ...mapActions("auth", ["signOut"]),
-    ...mapActions("home", ["loadSecretArea"]),
-    async handleSignOut() {
-      await this.signOut().then(() => {
-        this.router.push("/login");
-      });
-    },
-    async loadHomeData() {
-      await this.loadSecretArea().then((res: any) => {
-        this.msg = res.data;
-      });
-    },
-    ionViewWillEnter() {
-      this.loadHomeData();
-    }
-  }
+  // methods: {
+  //   ...mapActions("auth", ["signOut"]),
+  //   ...mapActions("home", ["loadSecretArea"]),
+  //   async handleSignOut() {
+  //     await this.signOut().then(() => {
+  //       this.router.push("/login");
+  //     });
+  //   },
+  //   async loadHomeData() {
+  //     await this.loadSecretArea().then((res: any) => {
+  //       this.msg = res.data;
+  //     });
+  //   },
+  //   ionViewWillEnter() {
+  //     this.loadHomeData();
+  //   }
+  // }
 }
 </script>

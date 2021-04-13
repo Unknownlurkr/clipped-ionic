@@ -31,8 +31,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Profile.vue')
       },
       {
-        path: 'feed',
-        component: () => import('@/views/feed.vue'),
+        path: 'Feed',
+        component: () => import('@/views/Feed.vue'),
         meta: { requiresAuth: false} 
       }
     ]
@@ -105,7 +105,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   console.log("testing beforeEach call");
-  
     const { hasUser } = dataService();
 
     console.log(`Has User:`, hasUser());
