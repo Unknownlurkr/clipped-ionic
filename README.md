@@ -1,29 +1,24 @@
 # ---- Clipped -----
-## Temporary Environment Structure:
-1. Explore (Brittany's Tab)
+## Environment Structure:
+1. Photos: Pteropticonns's Page
 
-2. Photos/Videos (Jeff's Tab)
+2. Feed: Unknownlurkr's Page
 
-3. Profile (Jordan's Tab)
+3. Profile:Plasmarocket's Page
 
-## ----- Tabs layout! -----
+# Changelog 
+## Legend:
+### Incomplete task vs ~~Completed task~~
 
-![Tab Layout Example](public\assets\images\documentation\readme\tabs-layout-example.png)
+* Landing page
+* Auth
+  * ~~Change password via email~~
+  * Logout w/ redirect
+  * Authentication checks before each call to router
+* Pages
+  * Pteropticonn
+    * Photos
+    * Videos
+    * Comment Module
 
-
-# Testing/Vue Specific Testing Packages
-
-## @vue/test-utils library
-
-Provides environment to interact with Vue Components in an isolated manner
-
-### Framework being used: JEST
-
-Changes to be implmented
- - [x] create example testing file
-
- ![JEST Example](public\assets\images\documentation\readme\example-JEST.png)
-
-
-
-
+  
