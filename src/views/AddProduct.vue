@@ -39,7 +39,7 @@
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Image</ion-label>
-        <ion-input type="file" @change="handeFileChange"></ion-input>
+        <ion-input type="file" @change="handleFileChange"></ion-input>
       </ion-item>
     </ion-content>
   </ion-page>
@@ -100,9 +100,6 @@ export default {
       sale_price: 0,
       category: "Sweater",
     });
-    /**
-     *
-     */
     const saveProductToDatabase = async () => {
       try {
         await saveProducts({
