@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import  SUPABASE_CLIENT  from "./supabase-config";
+import { v4 as uuidv4 } from "uuid";
 
 const productList = ref();
 const displayError = ref();
@@ -30,13 +31,13 @@ const dataService = () => {
   //FIXME: ensure bucket is properly configured on supabase so writing to product table succeeds
   const saveProducts = async (formData) => {
     try {
-        // 1) save image: in from data, pull out the key file and make everything else go to product data
+      // 1) save image
       const { file, ...productData } = formData;
-      const imagePath = `products/${file.name}`;
+      const imagePath = `products/${uuidv4()}-${file.name}`;
 
       const { error: sError } = await SUPABASE_CLIENT.storage
-      .from("product-bucket")
-      .upload(imagePath, file);
+        .from("product-bucket")
+        .upload(imagePath, file);
       if (sError) throw sError;
 
       // 2) save to database with image ref
@@ -45,7 +46,7 @@ const dataService = () => {
       ).insert([{ ...productData, image: imagePath }]);
       if (dbError) throw dbError;
 
-      return { success: true, data:dbData };
+      return { success: true, data: dbData };
     } catch (e) {
       console.log(e);
       return { success: false, error: e };
@@ -78,18 +79,19 @@ const login = async (email, password) => {
   });
   console.log(error && error.message);  
 
-  if(error.message == null) {
-    const newErrorMessage = "Please enter a password";
-    error.message = newErrorMessage;
-  }
+  if(error == null) return { user, error };
+
+  // REVIEW: idk wtf I'm doing here lol
+  // if(error.message == null) {
+  //   const newErrorMessage = "Please enter a password";
+  //   error.message = newErrorMessage;
+  // }
 
   if (error.message == "You must provide either an email or a third-party provider.") {
     const newErrorMessage = "You must provide an email";
     error.message = newErrorMessage;
-
   }
 
-  
   return { user, error };
 };
 

@@ -85,11 +85,10 @@ export default ({
                     user,
                     error
                 } = await login(email, password);
-                if (user) router.replace("/vids");
+                if (user.aud == "authenticated") router.replace("/home");
                 if (error) throw error;
             } catch (e) {
-                if (e.message != null) alert(e.message);
-
+                alert(e.message);
             }
         };
         // eslint-disable-next-line @typescript-eslint/no-empty-function
