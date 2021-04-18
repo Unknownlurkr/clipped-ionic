@@ -102,16 +102,20 @@ export default {
     });
     const saveProductToDatabase = async () => {
       try {
-        await saveProducts({
+        const { success, error } = await saveProducts({
           ...formData.value,
           // eslint-disable-next-line @typescript-eslint/camelcase
           list_price: Number(formData.value.list_price * 100),
           // eslint-disable-next-line @typescript-eslint/camelcase
           sale_price: Number(formData.value.sale_price * 100),
           file : selectedFile.value
+         
         });
-        router.back();
+        console.log(`Successfully saved product to database?: ${success}`);
+        if(error) throw error;
+        // router.back();
       } catch (e) {
+        console.log(`Error type: ${e.storageType}`);
         alert(e.message);
       }
     };

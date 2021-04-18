@@ -33,23 +33,36 @@ const dataService = () => {
     try {
       // 1) save image
       const { file, ...productData } = formData;
-      const imagePath = `products/${uuidv4()}-${file.name}`;
+      //TODO: Get image uploading w/ user ID prefix at some point
+      // const imagePath = `products/${uuidv4()}-${file.name}`;
+      const imagePath = `products/${file.name}`;
 
       const { error: sError } = await SUPABASE_CLIENT.storage
         .from("product-bucket")
         .upload(imagePath, file);
-      if (sError) throw sError;
+        debugger;
+        console.log(`sError ${sError}`);
+      if (sError){
+        sError.storageType = "Bucket";
+        throw sError;
+      } 
+
 
       // 2) save to database with image ref
-      const { data: dbData, error: dbError } = await SUPABASE_CLIENT.from(
+      const { data: dbData, error: dbError} = await SUPABASE_CLIENT.from(
         "products"
       ).insert([{ ...productData, image: imagePath }]);
-      if (dbError) throw dbError;
+      debugger;
+      console.log(`dbError ${dbError}`);
+      if (dbError) {
+        dbError.storageType = "Table";
+        throw dbError;
+      }
 
       return { success: true, data: dbData };
     } catch (e) {
       console.log(e);
-      return { success: false, error: e };
+      return { success: false, error: e};
     }
   };
 
