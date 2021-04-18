@@ -27,13 +27,25 @@ const dataService = () => {
     });
   }
   
-  /**
-   * save data
-   */
+  //FIXME: ensure bucket is properly configured on supabase so writing to product table succeeds
   const saveProducts = async (formData) => {
     try {
-      await SUPABASE_CLIENT.from("products").insert([{ ...formData.value }]);
-      return { success: true };
+        // 1) save image: in from data, pull out the key file and make everything else go to product data
+      const { file, ...productData } = formData;
+      const imagePath = `products/${file.name}`;
+
+      const { error: sError } = await SUPABASE_CLIENT.storage
+      .from("product-bucket")
+      .upload(imagePath, file);
+      if (sError) throw sError;
+
+      // 2) save to database with image ref
+      const { data: dbData, error: dbError } = await SUPABASE_CLIENT.from(
+        "products"
+      ).insert([{ ...productData, image: imagePath }]);
+      if (dbError) throw dbError;
+
+      return { success: true, data:dbData };
     } catch (e) {
       console.log(e);
       return { success: false, error: e };
