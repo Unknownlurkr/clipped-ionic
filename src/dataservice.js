@@ -53,8 +53,19 @@ const dataService = () => {
     }
   };
 
+  //TODO: Fix misleading naming scheme of parameter "productId" !HINT! it's not the Id, it's the entire object lol
   const removeProduct = async (productId) => {
-    await SUPABASE_CLIENT.from("products").delete().eq("id", productId);
+    const productIdAsNumber = Number(productId.id);
+    debugger;
+    const {
+      data,
+      error
+    } = await SUPABASE_CLIENT
+      .from('products')
+      .delete()
+      .match({id: productIdAsNumber});
+
+      return { data, error };
   };
 
   /**

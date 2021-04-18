@@ -13,21 +13,21 @@
 
     <ion-content :fullscreen="true" class="ion-padding">
       <ion-list>
-        <ion-item v-for="p in productList" :key="p.id">
+        <ion-item v-for="product in productList" :key="product.id">
           <ion-grid>
             <ion-row>
               <ion-col size="4">
-                <ImageView :image="p.image" />
+                <ImageView :image="product.image" />
               </ion-col>
               <ion-col>
                 <h2>
-                  {{ p.name }} <span>${{ p.list_price / 100 }}</span> -
-                  <span>${{ p.sale_price / 100 || 0 }}</span>
+                  {{ product.name }} <span>${{ product.list_price / 100 }}</span> -
+                  <span>${{ product.sale_price / 100 || 0 }}</span>
                 </h2>
-                <h4>{{ p.description }}</h4>
-                <p>{{ p.category }}</p>
+                <h4>{{ product.description }}</h4>
+                <p>{{ product.category }}</p>
                 <p>
-                  <ion-button color="danger" @click="deleletProduct(p)"
+                  <ion-button color="danger" @click="deleteProduct(product)"
                     >DELETE</ion-button
                   >
                 </p>
@@ -86,7 +86,7 @@ export default {
     ClippedHeader
   },
   ionViewDidEnter() {
-    console.log("Home page did enter");
+    console.log("Entering Home Page. Checking for Active User and Rendering Product List");
     const { loadProducts, hasUser } = dataService();
     hasUser && loadProducts();
   },
@@ -104,8 +104,12 @@ export default {
     const addProduct = () => {
       router.push("/add-product");
     };
-    const deleletProduct = async product => {
-      await removeProduct(product);
+    const deleteProduct = async product => {
+      console.log(product.id);
+      debugger;
+     const {data, error } = await removeProduct(product);
+     console.log(data, error);
+     debugger;
     };
     const doLogout = async () => {
       await logout();
@@ -115,7 +119,7 @@ export default {
       addProduct,
       productList,
       displayError,
-      deleletProduct,
+      deleteProduct,
       doLogout,
       // icons
       addCircleOutline,
