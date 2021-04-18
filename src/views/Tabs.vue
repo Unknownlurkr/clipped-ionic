@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-tabs>
-      <ion-tab-bar @slot="bottom">
+      <ion-tab-bar>
         <ion-tab-button tab="photos" href="/tabs/photos">
           <ion-icon :icon="images" />
           <ion-label>Photos</ion-label>

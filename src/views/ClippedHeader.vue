@@ -33,6 +33,7 @@ import {
     IonIcon
 } from "@ionic/vue";
 import {
+    ellipsisVertical,
     ellipsisHorizontal,
     homeOutline,
     appsSharp
@@ -54,8 +55,14 @@ export default {
     },
     setup() {
         const router = useRouter();
+        const returnHome = async () => {
+            router.push("/tabs");
+            
+        }
         return {
+            returnHome,
             router,
+            ellipsisVertical,
             ellipsisHorizontal,
             homeOutline,
             appsSharp
