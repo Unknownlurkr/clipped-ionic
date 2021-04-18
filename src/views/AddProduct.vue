@@ -37,6 +37,10 @@
           <ion-select-option value="Sweaters">Sweaters</ion-select-option>
         </ion-select>
       </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Image</ion-label>
+        <ion-input type="file" @change="handeFileChange"></ion-input>
+      </ion-item>
     </ion-content>
   </ion-page>
 </template>
@@ -82,12 +86,11 @@ export default {
     IonSelect,
     IonSelectOption,
   },
-  setup() {
+    setup() {
     const router = useRouter();
-    const {
-      saveProducts
-    } = dataService();
-
+    const { saveProducts } = dataService();
+    const selectedFile = ref(null);
+    
     const formData = ref({
       name: "",
       description: "",
@@ -95,23 +98,36 @@ export default {
       list_price: 0,
       // eslint-disable-next-line @typescript-eslint/camelcase
       sale_price: 0,
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      on_sale: true,
       category: "Sweater",
     });
-
+    /**
+     *
+     */
     const saveProductToDatabase = async () => {
       try {
-        await saveProducts(formData);
+        await saveProducts({
+          ...formData.value,
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          list_price: Number(formData.value.list_price * 100),
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          sale_price: Number(formData.value.sale_price * 100),
+          file : selectedFile.value
+        });
         router.back();
       } catch (e) {
         alert(e.message);
       }
     };
-
+    /**
+     *
+     */
+    const handleFileChange = (event) => {
+      selectedFile.value = event.target.files[0];
+    };
     return {
       saveProductToDatabase,
       formData,
+      handleFileChange,
     };
   },
 };

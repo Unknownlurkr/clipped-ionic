@@ -3,31 +3,43 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <clipped-header></clipped-header>
-        <ion-buttons @slot="end">
-          <ion-button @click="addProduct">ADD PRODUCT</ion-button>
+        <ion-buttons slot="end">
+          <ion-button @click="addProduct"
+            ><ion-icon slot="icon-only" :icon="addCircleOutline"></ion-icon
+          ></ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
+
     <ion-content :fullscreen="true" class="ion-padding">
       <ion-list>
         <ion-item v-for="p in productList" :key="p.id">
-          <div>
-            <h2>
-              {{ p.name }} <span>${{ p.list_price / 100 }}</span> -
-              <span>${{ p.sale_price / 100 || 0 }}</span>
-            </h2>
-            <h4>"{{ p.description }}" - some fashion reviewer</h4>
-            <p>Category: {{ p.category }}</p>
-            <p>
-              <ion-button color="danger" @click="deleteProduct(p.id)">DELETE</ion-button>
-            </p>
-          </div>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4">
+                <ImageView :image="p.image" />
+              </ion-col>
+              <ion-col>
+                <h2>
+                  {{ p.name }} <span>${{ p.list_price / 100 }}</span> -
+                  <span>${{ p.sale_price / 100 || 0 }}</span>
+                </h2>
+                <h4>{{ p.description }}</h4>
+                <p>{{ p.category }}</p>
+                <p>
+                  <ion-button color="danger" @click="deleletProduct(p)"
+                    >DELETE</ion-button
+                  >
+                </p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-item>
       </ion-list>
     </ion-content>
     <ion-footer class="ion-text-center">
       <ion-button @click="doLogout" fill="clear">
-        LOGOUT
+        <ion-icon :icon="logOutOutline"></ion-icon>
       </ion-button>
     </ion-footer>
   </ion-page>
@@ -43,35 +55,40 @@ import {
   IonList,
   IonButtons,
   IonButton,
-  IonFooter
+  IonFooter,
+  IonIcon,
+  IonRow,
+  IonCol,
+  IonGrid
 } from "@ionic/vue";
-
-import {
-  useRouter
-} from "vue-router";
-import dataService from ".././dataservice.js"
+import ImageView from "../components/ImageView.vue";
+import { addCircleOutline, logOutOutline } from "ionicons/icons";
+import { useRouter } from "vue-router";
+import dataService from "../dataservice.js";
 import ClippedHeader from './ClippedHeader.vue';
-
 export default {
   name: "Home",
   components: {
+    ImageView,
     IonContent,
     IonHeader,
     IonPage,
-    ClippedHeader,
     IonToolbar,
     IonItem,
     IonList,
     IonButtons,
     IonButton,
-    IonFooter
+    IonFooter,
+    IonIcon,
+    IonRow,
+    IonCol,
+    IonGrid,
+    ClippedHeader
   },
   ionViewDidEnter() {
     console.log("Home page did enter");
-    const {
-      loadProducts
-    } = dataService();
-    loadProducts();
+    const { loadProducts, hasUser } = dataService();
+    hasUser && loadProducts();
   },
   setup() {
     const router = useRouter();
@@ -79,35 +96,32 @@ export default {
       displayError,
       productList,
       removeProduct,
-      loadProducts,
       logout
     } = dataService();
-
     /**
      *  go to next page
      */
     const addProduct = () => {
       router.push("/add-product");
     };
-
-    const deleteProduct = async (id) => {
-      await removeProduct(id);
-      loadProducts();
+    const deleletProduct = async product => {
+      await removeProduct(product);
     };
-
     const doLogout = async () => {
       await logout();
       router.replace("/login");
     };
-
     return {
       addProduct,
       productList,
       displayError,
-      deleteProduct,
-      doLogout
+      deleletProduct,
+      doLogout,
+      // icons
+      addCircleOutline,
+      logOutOutline
     };
-  },
+  }
 };
 </script>
 
