@@ -7,6 +7,8 @@ import UserLogin from "@/views/UserLogin.vue";
 import UserCreate from "@/views/UserCreate.vue";
 import ChangePassword from "@/views/ChangePassword.vue";
 import TestArea from "@/views/TestArea.vue";
+import GuestLandingPage from "@/views/GuestLandingPage.vue";
+import Welcome from "@/views/Welcome.vue";
 // import { TokenService } from "@/services/token.service";
 import  dataService  from "./dataservice.js";
 
@@ -34,7 +36,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'Feed',
         component: () => import('@/views/Feed.vue'),
-        meta: { requiresAuth: false} 
+        meta: { requiresAuth: true} 
+      },
+      {
+        path: 'Welcome',
+        component: Welcome,
+        meta: { requiresAuth: true }
       }
     ]
   },
@@ -74,6 +81,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/testarea',
     name: "TestArea",
     component: TestArea
+  },
+  {
+    path: '/guest-landing',
+    name: "GuestLanding",
+    component: GuestLandingPage,
+    meta: { requiresAuth: false} 
   }
 
   
@@ -103,13 +116,19 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     const { hasUser } = dataService();
     console.log(`Has User:`, hasUser());
-    // debugger;
+    console.log(to.fullPath);
+    
     //if path we're trying to go to has index of type=recover on the end...
     if (to.fullPath.indexOf("type=recovery") != -1) {
       next("/change-password");
-    } else if (to.meta.requiresAuth && !hasUser()) {
-      next("/login");
-    } else {
+    }
+    //  else if (to.meta.requiresAuth && !hasUser()) {
+    //   next("/login");
+    // } 
+    else if (to.fullPath.includes("/tabs/feed") && !hasUser()) {      
+      next("/tabs/welcome");
+    }
+     else {
       next();
     }
 
