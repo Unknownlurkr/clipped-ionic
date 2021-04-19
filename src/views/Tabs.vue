@@ -11,7 +11,7 @@
           <ion-label>Feed</ion-label>
         </ion-tab-button>
         
-        <ion-tab-button tab="tab3" href="/tabs/Profile">
+        <ion-tab-button v-if="authGuard" tab="tab3" href="/tabs/Profile">
           <ion-icon :icon="personOutline"></ion-icon>
           <ion-label>Profile</ion-label>
         </ion-tab-button>
@@ -36,13 +36,20 @@
     personOutline
   } from 'ionicons/icons';
 
-import dataService from '../dataservice';
-  const { hasUser } = dataService()
+  import dataService from '../dataservice';
+  const {
+    hasUser
+  } = dataService();
+  import {
+  ref
+} from "vue";
   export default {
     name: 'Tabs',
-      ionViewDidEnter() {
-        alert("Has user? " + hasUser());
-      },
+    ionViewDidEnter() {
+      const authGuard = hasUser();
+      if (authGuard) alert("Has user? " + authGuard + "\n Setting Tabs to authenticated user view mode");
+      if (!authGuard) alert("Has user? " + authGuard + "\n Setting Tabs to guest view mode");
+    },
     components: {
       IonLabel,
       IonTabs,
@@ -52,18 +59,38 @@ import dataService from '../dataservice';
       IonPage
     },
     setup() {
+      
+      const conditionalRenderOptions = ref({
+        authGuard: false,
+          });
+      let { authGuard } = conditionalRenderOptions.value; 
+      const conditionalRender = () => {
+        
+        if(hasUser()) return true;
+        else return false;
+
+      }
+      authGuard = conditionalRender();
       return {
+        authGuard,
         images,
         triangle,
         colorFilterOutline,
         personOutline
       }
     },
-        methods: {
-          renderTabs() {
-            console.log("test");
-            
-          }
-        }
+    created() {
+      
+      // if (authGuard) alert("Has user? " + authGuard + "\n Setting Tabs to authenticated view mode");
+      // if (!authGuard) alert("Has user? " + authGuard + "\n Setting Tabs to unauthenticated view mode");
+    },
+    methods: {
+      renderTabs() {
+        console.log("test");
+
+
+      }
+    },
+
   }
 </script>
