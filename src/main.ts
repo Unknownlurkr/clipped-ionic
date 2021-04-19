@@ -6,6 +6,8 @@ import router from './router';
 import ApiService from './services/api.service';
 import { TokenService } from "./services/token.service";
 import  store from "@/store/index";
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { IonicVue } from '@ionic/vue';
 
