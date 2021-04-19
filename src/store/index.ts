@@ -5,6 +5,7 @@ import {cart} from "./modules/cart";
 import {product} from "./modules/product";
 import { comment } from "./modules/comments"
 
+//MUJST USE NATIVE CREATESTORE METHOD OF VUEX OR EVERYTHING BREAKS!
 export const store = createStore({
     modules: {
         a: auth,
