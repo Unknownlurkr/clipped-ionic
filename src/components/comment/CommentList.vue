@@ -10,25 +10,30 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions} from 'vuex';
 import Comment from './Comment';
-import  {store}  from "@/store/index";
+import  store  from "@/store/index";
 import { IonList } from "@ionic/vue";
 
 export default {
   name: 'CommentList',
-  computed: {
-    ...mapGetters(['comment'])
-  },
-  created() {
-    store.dispatch('getComments');
-    store.dispatch('getTester')
-  },
-  components: {
-    Comment,
-    IonList
-  }
-};
+    computed: {
+      ...mapGetters({
+        comments: 'comment/getComments'
+      })
+    },
+    methods: {
+      ...mapActions(['comment/getComments', 'comment/getTester'])
+    },
+    mounted() {
+      //this.$store.dispatch('company/getCompanies', null, {root:true})
+      this['comment/getComments']();
+    },
+    components: {
+      Comment,
+      IonList
+    }
+  };
 </script>
 
 <style scoped>
