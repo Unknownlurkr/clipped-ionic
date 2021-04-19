@@ -10,6 +10,7 @@
           <ion-icon :icon="colorFilterOutline" />
           <ion-label>Feed</ion-label>
         </ion-tab-button>
+        
         <ion-tab-button tab="tab3" href="/tabs/Profile">
           <ion-icon :icon="personOutline"></ion-icon>
           <ion-label>Profile</ion-label>
@@ -35,8 +36,13 @@
     personOutline
   } from 'ionicons/icons';
 
+import dataService from '../dataservice';
+  const { hasUser } = dataService()
   export default {
     name: 'Tabs',
+      ionViewDidEnter() {
+        alert("Has user? " + hasUser);
+      },
     components: {
       IonLabel,
       IonTabs,
@@ -52,6 +58,12 @@
         colorFilterOutline,
         personOutline
       }
-    }
+    },
+        methods: {
+          renderTabs() {
+            console.log("test");
+            
+          }
+        }
   }
 </script>

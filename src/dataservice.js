@@ -12,22 +12,36 @@ const session = ref();
  */
 const dataService = () => {
 
+  const loadProducts = async () => {
+    console.log("test");
+    const { data, error } = await SUPABASE_CLIENT.from("products").select("*");
+    productList.value = data;
+    displayError.value = error;
+  };
 
   /*
    * Called when dataService is first loaded to initalize the session,
    * also sets a listener to update the session based once changes 
    * in the auth state
    */
-  console.log("Calling Auth");
-  
   const initialize = async () => {
     session.value = SUPABASE_CLIENT.auth.session();
-    SUPABASE_CLIENT.auth.onAuthStateChange((_event, _session) => {
-      console.log(_event, session);
+
+    // if there is a session at startup, load the data
+    if (session.value) {
+      await loadProducts();
+    }
+
+    SUPABASE_CLIENT.auth.onAuthStateChange(async (_event, _session) => {
       session.value = _session;
+      // if there is a session at startup, because of
+      // a state change, then load the data
+      if (_session) {
+        await loadProducts();
+      }
     });
-  }
-  
+  };
+
   //FIXME: ensure bucket is properly configured on supabase so writing to product table succeeds
   const saveProducts = async (formData) => {
     try {
@@ -37,6 +51,7 @@ const dataService = () => {
       // const imagePath = `products/${uuidv4()}-${file.name}`;
       const imagePath = `products/${file.name}`;
 
+      //FIXME: plz
       const { error: sError } = await SUPABASE_CLIENT.storage
         .from("product-bucket")
         .upload(imagePath, file);
@@ -46,8 +61,6 @@ const dataService = () => {
         sError.storageType = "Bucket";
         throw sError;
       } 
-
-
       // 2) save to database with image ref
       const { data: dbData, error: dbError} = await SUPABASE_CLIENT.from(
         "products"
@@ -81,17 +94,6 @@ const dataService = () => {
       return { data, error };
   };
 
-  /**
-   *
-   */
-  const loadProducts = async () => {
-    const { data, error } = await SUPABASE_CLIENT.from("products").select("*");
-    productList.value = data;
-    displayError.value = error;
-  };
-
-  //Auth
-
 const hasUser = () => {
   return session.value !== null;
 }
@@ -101,11 +103,13 @@ const login = async (email, password) => {
     email,
     password,
   });
+  const userCred = SUPABASE_CLIENT.auth.user()
+  console.log(userCred);
   console.log(error && error.message);  
-
+  
   if(error == null) return { user, error };
 
-  // REVIEW: idk wtf I'm doing here lol
+  // REVIEW: idk wth I'm doing here lol
   // if(error.message == null) {
   //   const newErrorMessage = "Please enter a password";
   //   error.message = newErrorMessage;
