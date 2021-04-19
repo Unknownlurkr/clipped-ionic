@@ -25,10 +25,15 @@ const actions = {
     }
 
 const getters = {
-    getCommentObj(commentId, eventDetails){
-        const commentObj = this.state.productSeed.find(comment => comment.id === commentId)
-        return commentObj.events.find(event => event.details === eventDetails)
+    getTester: state => {
+        const testString = "fuck";
+        return testString
     },
+    // getCommentObj(commentId, eventDetails){
+    //     const commentObj = this.state.productSeed.find(comment => comment.id === commentId)
+    //     return commentObj.events.find(event => event.details === eventDetails)
+    // },
+    getProductSeed: state => state.productSeed,
     // getCommentAuthor()
     getComments: state => state.comments,
     getTimeStamps: state => state.timestamps,

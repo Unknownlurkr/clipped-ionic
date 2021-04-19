@@ -1,7 +1,7 @@
 <template>
   <ion-page>
 
-  <comment></comment>
+  <CommentList></CommentList>
 
   </ion-page>
 </template>
@@ -10,12 +10,12 @@
 
 
 import { IonPage} from "@ionic/vue";
-import Comment from '@/components/comment/Comment.vue';
+import CommentList from '@/components/comment/CommentList.vue';
 export default {
   name: 'TestArea',
   components: {
-    IonPage,
-    Comment
+    CommentList,
+    IonPage
   }
 };
 </script>
