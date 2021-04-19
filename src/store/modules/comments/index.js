@@ -1,7 +1,8 @@
-
+import { productSeed } from "@/productSeed";
 const state = {
-  comment: [],
-  timestamps: []
+    productSeed,
+    comment: [],
+    timestamps: []
 };
 
 const mutations = {
@@ -24,6 +25,11 @@ const actions = {
     }
 
 const getters = {
+    getCommentObj(commentId, eventDetails){
+        const commentObj = this.state.productSeed.find(comment => comment.id === commentId)
+        return commentObj.events.find(event => event.details === eventDetails)
+    },
+    // getCommentAuthor()
     getComments: state => state.comments,
     getTimeStamps: state => state.timestamps,
     getCommentCount: state => state.comments.length
