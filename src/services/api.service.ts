@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { store } from '@/store';
+import  store  from '@/store/index';
 import { TokenService } from '@/services/token.service';
 import { loadingController } from "@ionic/vue";
 

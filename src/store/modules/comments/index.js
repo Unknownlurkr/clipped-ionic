@@ -1,7 +1,7 @@
 import { productSeed } from "@/productSeed";
 const state = {
     productSeed,
-    comment: [],
+    comments: [],
     timestamps: []
 };
 
@@ -40,7 +40,7 @@ const getters = {
     getCommentCount: state => state.comments.length
 }
 
-export const comment = {
+export const commentModule = {
     namespaced: true,
     state,
     getters,
