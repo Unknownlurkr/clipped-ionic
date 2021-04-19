@@ -6,6 +6,7 @@ import Home  from "@/views/Home.vue";
 import UserLogin from "@/views/UserLogin.vue";
 import UserCreate from "@/views/UserCreate.vue";
 import ChangePassword from "@/views/ChangePassword.vue";
+import TestArea from "@/views/TestArea.vue";
 // import { TokenService } from "@/services/token.service";
 import  dataService  from "./dataservice.js";
 
@@ -72,7 +73,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/testarea',
     name: "TestArea",
-    component: () => import('@/components/TestArea.vue')
+    component: TestArea
   }
 
   
