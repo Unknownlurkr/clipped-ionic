@@ -2,11 +2,11 @@
   <ion-page>
     <ion-tabs>
       <ion-tab-bar>
-        <ion-tab-button tab="photos" href="/tabs/photos">
+        <ion-tab-button v-if="authGuard" tab="photos" href="/tabs/photos">
           <ion-icon :icon="images" />
           <ion-label>Photos</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="feed" href="/tabs/feed">
+        <ion-tab-button v-if="authGuard"  tab="feed" href="/tabs/feed">
           <ion-icon :icon="colorFilterOutline" />
           <ion-label>Feed</ion-label>
         </ion-tab-button>
