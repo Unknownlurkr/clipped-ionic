@@ -41,7 +41,7 @@ import dataService from '../dataservice';
   export default {
     name: 'Tabs',
       ionViewDidEnter() {
-        alert("Has user? " + hasUser);
+        alert("Has user? " + hasUser());
       },
     components: {
       IonLabel,
