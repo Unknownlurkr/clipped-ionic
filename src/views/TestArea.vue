@@ -1,28 +1,25 @@
 <template>
   <ion-page>
 
-          <CalendarWeek/>
-          <CalendarEntry/>
+  <comment></comment>
 
   </ion-page>
 </template>
 
 <script>
 
-import CalendarWeek from './CalendarWeek.vue';
-import CalendarEntry from './CalendarEntry.vue';
-import { IonPage} from "@ionic/vue";
 
+import { IonPage} from "@ionic/vue";
+import Comment from '@/components/comment/Comment.vue';
 export default {
   name: 'TestArea',
   components: {
-    CalendarWeek,
-    CalendarEntry,
     IonPage,
-
+    Comment
   }
 };
 </script>
+
 
 <style>
 html,
