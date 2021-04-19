@@ -103,7 +103,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     const { hasUser } = dataService();
     console.log(`Has User:`, hasUser());
-    debugger;
+    // debugger;
     //if path we're trying to go to has index of type=recover on the end...
     if (to.fullPath.indexOf("type=recovery") != -1) {
       next("/change-password");

@@ -36,6 +36,7 @@ const dataService = () => {
       session.value = _session;
       // if there is a session at startup, because of
       // a state change, then load the data
+      //TODO: add conditional to check router stack
       if (_session) {
         await loadProducts();
       }
