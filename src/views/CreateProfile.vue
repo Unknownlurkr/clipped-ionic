@@ -15,7 +15,7 @@
     <ion-content :fullscreen="true" class="ion-padding">
       <ion-item>
         <ion-label>Username</ion-label>
-        <ion-input type="text" v-model="formData.Username"></ion-input>
+        <ion-input type="text" v-model="formData.username"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Description</ion-label>
@@ -67,23 +67,17 @@ export default {
     const { saveProfile } = dataService();
     
     const formData = ref({
-      name: "",
+      username: "",
       description: ""
     });
-    const saveProfileToDatabase = async () => {
-      try {
-        const { success, error } = await saveProfile({
-          ...formData.value,
-         
-        });
-        console.log(`Profile Created: ${success}`);
-        if(error) throw error;
-        // router.back();
-      } catch (e) {
-        console.log(`Error type: ${e.storageType}`);
-        alert(e.message);
-      }
-    };
+        const saveProfileToDatabase = async () => {
+          try {
+            await saveProfile(formData);
+            debugger;
+          } catch (e) {
+            alert(e.message);
+          }
+        };
  
     
     return {

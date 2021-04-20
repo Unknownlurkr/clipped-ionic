@@ -1,7 +1,8 @@
 <template>
   <ion-page>
 
-  <CommentList></CommentList>
+
+  <dynamic-form></dynamic-form>
 
   </ion-page>
 </template>
@@ -11,14 +12,17 @@
 
 import { IonPage} from "@ionic/vue";
 import CommentList from '@/components/comment/CommentList.vue';
+import DynamicForm from "@/components/DynamicForm.vue";
+
 export default {
   name: 'TestArea',
   components: {
-    CommentList,
-    IonPage
+
+    IonPage,
+    DynamicForm
   }
 };
-</script>
+</script>,
 
 
 <style>

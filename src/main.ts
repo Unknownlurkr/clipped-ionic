@@ -1,6 +1,6 @@
 import {defineCustomElements} from '@ionic/pwa-elements/loader';
-
 import { createApp, provide} from 'vue'
+
 import App from './App.vue'
 import router from './router';
 import ApiService from './services/api.service';
@@ -29,12 +29,13 @@ import '@ionic/vue/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-
-
+import { createDynamicForms } from '@asigloo/vue-dynamic-forms';
+const VueDynamicForms = createDynamicForms();
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
-  .use(store);
+  .use(store)
+  .use(VueDynamicForms);
   // Call the element loader after the platform has been bootstrapped
 defineCustomElements(window);
 router.isReady().then(() => {

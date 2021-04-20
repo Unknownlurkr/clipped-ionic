@@ -2,20 +2,24 @@
     <ion-page>
         <ion-header>
             <clipped-header></clipped-header>
+            
         </ion-header>
         <ion-content :fullscreen="true">
             <ion-grid>
+                
                 <ion-row>
                     <ion-col size="8">
                         <ion-card class="ion-activated" id="vid-detail">
                             <ion-card-header>
+                                
                                 <ion-card-subtitle>Clipped</ion-card-subtitle>
                                 <ion-card-title>Epic Video, yeah!</ion-card-title>
                             </ion-card-header>
-                            <image-view></image-view>
+                            <video-view></video-view>
                         </ion-card>
                     </ion-col>
                     <ion-col>
+                        <ion-button @click="openSignInModal">Add Comment</ion-button>
                         <static-list-ex></static-list-ex>
                     </ion-col>
                 </ion-row>
@@ -39,7 +43,9 @@ import {
     IonCardSubtitle,
     IonGrid,
     IonRow,
-    IonCol
+    IonCol,
+    modalController,
+    IonButton
 
 } from '@ionic/vue';
 
@@ -65,8 +71,8 @@ import {
     useRouter
 } from 'vue-router';
 import ClippedHeader from './ClippedHeader.vue';
-import ImageView from '@/components/ImageView.vue';
-
+import VideoView from '@/components/VideoView.vue';
+import Modal from './modal.vue'
 
 
 export default {
@@ -85,7 +91,8 @@ export default {
         IonRow,
         IonCol,
         ClippedHeader,
-        ImageView
+        VideoView,   
+        IonButton
     },
     setup() {
         const router = useRouter();
@@ -100,9 +107,21 @@ export default {
     },
     methods: {
         returnHome() {
-            console.log("fuck");
-
-        }
+            console.log("go home");
+            
+            
+        },
+ async openSignInModal() {
+      const modal = await modalController
+        .create({
+          component: Modal,
+          cssClass: 'my-custom-class',
+          componentProps: {
+            title: "Enter a comment"
+          },
+        })
+      return modal.present();
+    }
     }
 }
 

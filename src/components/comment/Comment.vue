@@ -1,4 +1,4 @@
-<template>
+  <template>
   <ion-item>
     <!-- <ion-avatar slot="start">
                 <img src="../../public/assets/images/avatars/face1.png">

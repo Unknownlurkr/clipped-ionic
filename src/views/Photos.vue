@@ -22,7 +22,7 @@
           <ion-icon :icon="camera"></ion-icon>
         </ion-fab-button>
       </ion-fab>
-      <ExploreContainer name="Tab 2 page" />
+      
     </ion-content>
   </ion-page>
 </template>
@@ -60,6 +60,7 @@ export default {
     IonIcon,
     IonToolbar,
     IonTitle,
+    
     IonContent
   },
 
