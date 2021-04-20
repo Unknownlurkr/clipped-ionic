@@ -8,7 +8,7 @@
                     <ion-col size="8">
                         <ion-card class="ion-activated" id="vid-detail">
                             <ion-card-header>
-                                <ion-card-subtitle>Clipped</ion-card-subtitle>
+                                <ion-card-subtitle>New video YAS</ion-card-subtitle>
                                 <ion-card-title>Epic Video, yeah!</ion-card-title>
                             </ion-card-header>
                         </ion-card>

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@capacitor/core": "2.4.6",
+    "@ionic-native/video-player": "^5.32.1",
     "@ionic/pwa-elements": "^3.0.2",
     "@ionic/vue": "^5.4.0",
     "@ionic/vue-router": "^5.4.0",
@@ -20,6 +21,7 @@
     "babel": "^6.23.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.6.0",
+    "cordova-plugin-video-player": "git+https://github.com/moust/cordova-plugin-videoplayer.git",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
