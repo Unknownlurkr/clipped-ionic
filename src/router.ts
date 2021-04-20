@@ -11,7 +11,6 @@ import GuestLandingPage from "@/views/GuestLandingPage.vue";
 import Welcome from "@/views/Welcome.vue";
 // import { TokenService } from "@/services/token.service";
 import  dataService  from "./dataservice.js";
-import { truncate } from 'fs/promises';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -37,7 +36,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'Feed',
         component: () => import('@/views/Feed.vue'),
-        meta: { requiresAuth: truncate} 
+        meta: { requiresAuth: true } 
       },
       {
         path: 'Welcome',
