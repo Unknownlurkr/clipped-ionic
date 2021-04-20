@@ -16,6 +16,28 @@
                     </ion-col>
                 </ion-row>
                 <ion-row>
+                    <ion-col size="8">
+                        <ion-card class="ion-activated" id="vid-detail">
+                            <ion-card-header>
+                                <ion-card-subtitle>New video YAS</ion-card-subtitle>
+                                <ion-card-title>Epic Video, yeah!</ion-card-title>
+                            </ion-card-header>
+                            <video-view></video-view>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="8">
+                        <ion-card class="ion-activated" id="vid-detail">
+                            <ion-card-header>
+                                <ion-card-subtitle>New video YAS</ion-card-subtitle>
+                                <ion-card-title>Epic Video, yeah!</ion-card-title>
+                            </ion-card-header>
+                            <video-view></video-view>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
                     <!-- <comment></comment> -->
                 </ion-row>
             </ion-grid>
@@ -24,6 +46,24 @@
 
 
 <style lang="css">
+ion-content{
+    --ion-background-color:#000000;
+}
+#header-search-vids {
+    width: 90%;
+    float: right;
+}
+
+#vid-detail {
+    background-color: rgba(119, 31, 141, 0.767);
+    left: 0;
+    right: 0;
+    top: 50%;
+    width: 100%; 
+    height: 700px;
+    transform: translateY(-50%);
+    position: center;
+}
 
 </style>
 
