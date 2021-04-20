@@ -11,17 +11,13 @@
                                 <ion-card-subtitle>New video YAS</ion-card-subtitle>
                                 <ion-card-title>Epic Video, yeah!</ion-card-title>
                             </ion-card-header>
+                            <video-view></video-view>
                         </ion-card>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <!-- <comment></comment> -->
                 </ion-row>
-                <ion-row>
-          <ion-col size="6" :key="photo" v-for="photo in photos">
-            <ion-img :src="photo.webviewPath"></ion-img>
-          </ion-col>
-        </ion-row>
             </ion-grid>
         </ion-content>
 </template>
@@ -42,12 +38,15 @@ import {
     IonCardSubtitle,
     IonGrid,
     IonRow,
-    IonCol
+    IonCol,
+    modalController,
+    IonButton
 
 } from '@ionic/vue';
 
 // import 'vuetify/dist/vuetify.min.css'
 import {
+    
     ellipsisHorizontal,
     ellipsisVertical,
     helpCircle,
@@ -58,9 +57,66 @@ import {
     appsSharp
 } from 'ionicons/icons';
 
+
+import Comment from "../components/comment/Comment.vue";
+import StaticListEx from "../components/StaticListEx.vue";
+
 import {
 
     useRouter
 } from 'vue-router';
 import ClippedHeader from './ClippedHeader.vue';
+import VideoView from '@/components/VideoView.vue';
+import Modal from './modal.vue'
+
+
+export default {
+    name: 'Vids',
+    components: {
+        //IonPage,
+        IonHeader,
+        IonContent,
+        IonCard,
+        //StaticListEx,
+        //Comment,
+        IonCardSubtitle,
+        IonCardHeader,
+        IonCardTitle,
+        IonGrid,
+        IonRow,
+        IonCol,
+        ClippedHeader,
+        VideoView,   
+        //IonButton
+    },
+    setup() {
+        const router = useRouter();
+        return {
+            router,
+            ellipsisVertical,
+            helpCircle,
+            personCircle,
+            search,
+            star,
+        };
+    },
+    methods: {
+        returnHome() {
+            console.log("go home");
+            
+            
+        },
+ async openSignInModal() {
+      const modal = await modalController
+        .create({
+          component: Modal,
+          cssClass: 'my-custom-class',
+          componentProps: {
+            title: "Enter a comment"
+          },
+        })
+      return modal.present();
+    }
+    }
+}
 </script>
