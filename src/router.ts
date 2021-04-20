@@ -9,6 +9,7 @@ import ChangePassword from "@/views/ChangePassword.vue";
 import TestArea from "@/views/TestArea.vue";
 import GuestLandingPage from "@/views/GuestLandingPage.vue";
 import Welcome from "@/views/Welcome.vue";
+import CreateProfile from "@/views/CreateProfile.vue";
 // import { TokenService } from "@/services/token.service";
 import  dataService  from "./dataservice.js";
 
@@ -60,6 +61,12 @@ const routes: Array<RouteRecordRaw> = [
     path: "/login",
     component: UserLogin,
     meta: { requiresAuth: false}
+  },
+  {
+    path: "/CreateProfile",
+    name: "CreateProfile",
+    component: CreateProfile,
+    meta: { requiresAuth: false} 
   },
   {
     path: "/create-account",
