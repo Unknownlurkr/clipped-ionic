@@ -61,41 +61,66 @@ const dataService = () => {
   };
 
   //FIXME: ensure bucket is properly configured on supabase so writing to product table succeeds
+  // const saveProducts = async (formData) => {
+  //   try {
+  //     // 1) save image
+  //     const { file, ...productData } = formData;
+  //     //TODO: Get image uploading w/ user ID prefix at some point
+  //     // const imagePath = `products/${uuidv4()}-${file.name}`;
+  //     const imagePath = `products/${file.name}`;
+
+  //     //FIXME: plz
+  //     const { error: sError } = await SUPABASE_CLIENT.storage
+  //       .from("product-bucket")
+  //       .upload(imagePath, file);
+  //       debugger;
+  //       console.log(`sError ${sError}`);
+  //     if (sError){
+  //       sError.storageType = "Bucket";
+  //       throw sError;
+  //     } 
+  //     // 2) save to database with image ref
+  //     const { data: dbData, error: dbError} = await SUPABASE_CLIENT.from(
+  //       "products"
+  //     ).insert([{ ...productData, image: imagePath }]);
+  //     debugger;
+  //     console.log(`dbError ${dbError}`);
+  //     if (dbError) {
+  //       dbError.storageType = "Table";
+  //       throw dbError;
+  //     }
+
+  //     return { success: true, data: dbData };
+  //   } catch (e) {
+  //     console.log(e);
+  //     return { success: false, error: e};
+  //   }
+  // };
   const saveProducts = async (formData) => {
     try {
-      // 1) save image
-      const { file, ...productData } = formData;
-      //TODO: Get image uploading w/ user ID prefix at some point
-      // const imagePath = `products/${uuidv4()}-${file.name}`;
-      const imagePath = `products/${file.name}`;
-
-      //FIXME: plz
-      const { error: sError } = await SUPABASE_CLIENT.storage
-        .from("product-bucket")
-        .upload(imagePath, file);
-        debugger;
-        console.log(`sError ${sError}`);
-      if (sError){
-        sError.storageType = "Bucket";
-        throw sError;
-      } 
-      // 2) save to database with image ref
-      const { data: dbData, error: dbError} = await SUPABASE_CLIENT.from(
-        "products"
-      ).insert([{ ...productData, image: imagePath }]);
-      debugger;
-      console.log(`dbError ${dbError}`);
-      if (dbError) {
-        dbError.storageType = "Table";
-        throw dbError;
-      }
-
-      return { success: true, data: dbData };
+      await SUPABASE_CLIENT.from("products").insert([{ ...formData.value }]);
+      return { success: true };
     } catch (e) {
       console.log(e);
-      return { success: false, error: e};
+      return { success: false, error: e };
     }
   };
+  
+    //TODO: Fix misleading naming scheme of parameter "productId" !HINT! it's not the Id, it's the entire object lol
+    const removeProduct = async (productId) => {
+      const productIdAsNumber = Number(productId.id);
+      debugger;
+      const {
+        data,
+        error
+      } = await SUPABASE_CLIENT
+        .from('products')
+        .delete()
+        .match({id: productIdAsNumber});
+  
+        return { data, error };
+    };
+
   const saveProfile = async (formData) => {
     try {
       console.log({...formData.value});
@@ -104,20 +129,6 @@ const dataService = () => {
     } catch (error) {
       return { success: false, error: error}
     }
-  };
-  //TODO: Fix misleading naming scheme of parameter "productId" !HINT! it's not the Id, it's the entire object lol
-  const removeProduct = async (productId) => {
-    const productIdAsNumber = Number(productId.id);
-    debugger;
-    const {
-      data,
-      error
-    } = await SUPABASE_CLIENT
-      .from('products')
-      .delete()
-      .match({id: productIdAsNumber});
-
-      return { data, error };
   };
 
 const hasUser = () => {
