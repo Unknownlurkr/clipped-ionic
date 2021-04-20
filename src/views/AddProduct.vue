@@ -37,10 +37,10 @@
           <ion-select-option value="Sweaters">Sweaters</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-item>
+      <!-- <ion-item>
         <ion-label position="stacked">Image</ion-label>
         <ion-input type="file" @change="handleFileChange"></ion-input>
-      </ion-item>
+      </ion-item> -->
     </ion-content>
   </ion-page>
 </template>
@@ -89,7 +89,7 @@ export default {
     setup() {
     const router = useRouter();
     const { saveProducts } = dataService();
-    const selectedFile = ref(null);
+    // const selectedFile = ref(null);
     
     const formData = ref({
       name: "",
@@ -100,35 +100,44 @@ export default {
       sale_price: 0,
       category: "Sweater",
     });
-    const saveProductToDatabase = async () => {
-      try {
-        const { success, error } = await saveProducts({
-          ...formData.value,
-          // eslint-disable-next-line @typescript-eslint/camelcase
-          list_price: Number(formData.value.list_price * 100),
-          // eslint-disable-next-line @typescript-eslint/camelcase
-          sale_price: Number(formData.value.sale_price * 100),
-          file : selectedFile.value
+    // const saveProductToDatabase = async () => {
+
+    //   try {
+    //     const { success, error } = await saveProducts({
+    //       ...formData.value,
+    //       // eslint-disable-next-line @typescript-eslint/camelcase
+    //       list_price: Number(formData.value.list_price * 100),
+    //       // eslint-disable-next-line @typescript-eslint/camelcase
+    //       sale_price: Number(formData.value.sale_price * 100),
+    //       // file : selectedFile.value
          
-        });
-        console.log(`Successfully saved product to database?: ${success}`);
-        if(error) throw error;
-        // router.back();
-      } catch (e) {
-        console.log(`Error type: ${e.storageType}`);
-        alert(e.message);
-      }
-    };
-    /**
-     *
-     */
-    const handleFileChange = (event) => {
-      selectedFile.value = event.target.files[0];
-    };
+    //     });
+    //     console.log(`Successfully saved product to database?: ${success}`);
+    //     if(error) throw error;
+    //     // router.back();
+    //   } catch (e) {
+    //     console.log(`Error type: ${e.storageType}`);
+    //     alert(e.message);
+    //   }
+    // };
+    // /**
+    //  *
+    //  */
+    // const handleFileChange = (event) => {
+    //   selectedFile.value = event.target.files[0];
+    // };
+        const saveProductToDatabase = async () => {
+          try {
+            await saveProducts(formData);
+            router.back();
+          } catch (e) {
+            alert(e.message);
+          }
+        };
     return {
       saveProductToDatabase,
       formData,
-      handleFileChange,
+      // handleFileChange,
     };
   },
 };

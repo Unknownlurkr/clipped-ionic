@@ -87,7 +87,10 @@ export default {
   },
   ionViewDidEnter() {
     console.log("Entering Home Page. Checking for Active User and Rendering Product List");
-    const { loadProducts, hasUser } = dataService();
+    const {
+      loadProducts,
+      hasUser
+    } = dataService();
     hasUser && loadProducts();
   },
   setup() {
@@ -105,11 +108,13 @@ export default {
       router.push("/add-product");
     };
     const deleteProduct = async product => {
-      console.log(product.id);
-      debugger;
-     const {data, error } = await removeProduct(product);
-     console.log(data, error);
-     debugger;
+
+      const {
+        data,
+        error
+      } = await removeProduct(product);
+      console.log(data, error);
+      router.go();
     };
     const doLogout = async () => {
       await logout();
