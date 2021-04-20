@@ -13,13 +13,15 @@
                             </ion-card-header>
                         </ion-card>
                     </ion-col>
-                    <ion-col>
-                        <static-list-ex></static-list-ex>
-                    </ion-col>
                 </ion-row>
                 <ion-row>
                     <!-- <comment></comment> -->
                 </ion-row>
+                <ion-row>
+          <ion-col size="6" :key="photo" v-for="photo in photos">
+            <ion-img :src="photo.webviewPath"></ion-img>
+          </ion-col>
+        </ion-row>
             </ion-grid>
         </ion-content>
 </template>
