@@ -56,10 +56,6 @@ import {
     appsSharp
 } from 'ionicons/icons';
 
-
-import Comment from "../components/comment/Comment.vue";
-import StaticListEx from "../components/StaticListEx.vue";
-
 import {
 
     useRouter
