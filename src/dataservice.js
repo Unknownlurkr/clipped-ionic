@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 const productList = ref();
 const displayError = ref();
 const session = ref();
+const commentList = ref();
+const profileList = ref();
 
 
 /**
@@ -21,9 +23,19 @@ const dataService = () => {
   const loadProfiles = async () => {
     console.log("test");
     const { data, error } = await SUPABASE_CLIENT.from("Profiles").select("*");
-    productList.value = data;
+    profileList.value = data;
     displayError.value = error;
   };
+  const loadComments = async () => {
+    const {
+      data: comments,
+      error
+    } = await SUPABASE_CLIENT
+      .from('comments')
+      .select('*')
+      commentList.value = comments;
+      displayError.value = error;
+  }
   /*
    * Called when dataService is first loaded to initalize the session,
    * also sets a listener to update the session based once changes 
@@ -67,15 +79,6 @@ const dataService = () => {
         sError.storageType = "Bucket";
         throw sError;
       } 
-      const saveProfile = async (formData) => {
-        try {
-          console.log({...formData.value});
-          await SUPABASE_CLIENT.from("Profiles").insert([{...formData.value}]);
-          return { success: true };
-        } catch (error) {
-          return { success: false, error: error}
-        }
-      };
       // 2) save to database with image ref
       const { data: dbData, error: dbError} = await SUPABASE_CLIENT.from(
         "products"
@@ -101,20 +104,6 @@ const dataService = () => {
     } catch (error) {
       return { success: false, error: error}
     }
-  };
-  //TODO: Fix misleading naming scheme of parameter "productId" !HINT! it's not the Id, it's the entire object lol
-  const removeProduct = async (productId) => {
-    const productIdAsNumber = Number(productId.id);
-    debugger;
-    const {
-      data,
-      error
-    } = await SUPABASE_CLIENT
-      .from('products')
-      .delete()
-      .match({id: productIdAsNumber});
-
-      return { data, error };
   };
   //TODO: Fix misleading naming scheme of parameter "productId" !HINT! it's not the Id, it's the entire object lol
   const removeProduct = async (productId) => {
@@ -209,7 +198,8 @@ const changePassword = async (password) => {
     forgotPassword,
     changePassword,
     hasUser,
-    initialize
+    initialize,
+    
   };
 };
 
