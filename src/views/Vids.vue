@@ -12,6 +12,7 @@
                                 <ion-card-subtitle>Clipped</ion-card-subtitle>
                                 <ion-card-title>Epic Video, yeah!</ion-card-title>
                             </ion-card-header>
+                            <image-view></image-view>
                         </ion-card>
                     </ion-col>
                     <ion-col>
@@ -44,6 +45,7 @@ import {
 
 // import 'vuetify/dist/vuetify.min.css'
 import {
+    
     ellipsisHorizontal,
     ellipsisVertical,
     helpCircle,
@@ -63,6 +65,7 @@ import {
     useRouter
 } from 'vue-router';
 import ClippedHeader from './ClippedHeader.vue';
+import ImageView from '@/components/ImageView.vue';
 
 
 
@@ -81,7 +84,8 @@ export default {
         IonGrid,
         IonRow,
         IonCol,
-        ClippedHeader
+        ClippedHeader,
+        ImageView
     },
     setup() {
         const router = useRouter();

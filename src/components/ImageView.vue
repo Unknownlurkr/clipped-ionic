@@ -6,7 +6,7 @@
 import { IonImg } from "@ionic/vue";
 import { ref } from "@vue/runtime-core";
 import SUPABASE_CLIENT from "../supabase-config";
-import missingImage from "../.././public/assets/images/no_image_available.jpeg"
+import missingImage from "../../public/assets/imgs/sppoky-skeely-gif.gif"
 export default {
   name: "ImageView",
   components: {
