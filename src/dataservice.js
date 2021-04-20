@@ -96,6 +96,22 @@ const dataService = () => {
   //     return { success: false, error: e};
   //   }
   // };
+
+      //TODO: Fix misleading naming scheme of parameter "productId" !HINT! it's not the Id, it's the entire object lol
+      const removeProduct = async (productId) => {
+        const productIdAsNumber = Number(productId.id);
+        debugger;
+        const {
+          data,
+          error
+        } = await SUPABASE_CLIENT
+          .from('products')
+          .delete()
+          .match({id: productIdAsNumber});
+    
+          return { data, error };
+      };
+  
   const saveProducts = async (formData) => {
     try {
       await SUPABASE_CLIENT.from("products").insert([{ ...formData.value }]);
@@ -106,25 +122,11 @@ const dataService = () => {
     }
   };
   
-    //TODO: Fix misleading naming scheme of parameter "productId" !HINT! it's not the Id, it's the entire object lol
-    const removeProduct = async (productId) => {
-      const productIdAsNumber = Number(productId.id);
-      debugger;
-      const {
-        data,
-        error
-      } = await SUPABASE_CLIENT
-        .from('products')
-        .delete()
-        .match({id: productIdAsNumber});
-  
-        return { data, error };
-    };
 
   const saveProfile = async (formData) => {
     try {
       console.log({...formData.value});
-      await SUPABASE_CLIENT.from("Profiles").insert([{...formData.value}]);
+      await SUPABASE_CLIENT.from("profiles").insert([{...formData.value}]);
       return { success: true };
     } catch (error) {
       return { success: false, error: error}
