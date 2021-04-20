@@ -1,67 +1,222 @@
 <template>
-  <ion-page>
-    <ion-header>
-      <clipped-header></clipped-header>
-    </ion-header>
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Explore other content</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-title>{{msg}}</ion-title>
-      <ExploreContainer name="Explore" />
-    </ion-content>
-  </ion-page>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        ion-col
+      </ion-col>
+      <ion-col>
+        ion-col
+      </ion-col>
+      <ion-col>
+        ion-col
+      </ion-col>
+      <ion-col>
+        ion-col
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        ion-col [size="6"]
+      </ion-col>
+      <ion-col>
+        ion-col
+      </ion-col>
+      <ion-col>
+        ion-col
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="3">
+        ion-col [size="3"]
+      </ion-col>
+      <ion-col>
+        ion-col
+      </ion-col>
+      <ion-col size="3">
+        ion-col [size="3"]
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="3">
+        ion-col [size="3"]
+      </ion-col>
+      <ion-col size="3" offset="3">
+        ion-col [size="3"] [offset="3"]
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        ion-col
+      </ion-col>
+      <ion-col>
+        ion-col
+        <br>#
+      </ion-col>
+      <ion-col>
+        ion-col
+        <br>#
+        <br>#
+      </ion-col>
+      <ion-col>
+        ion-col
+        <br>#
+        <br>#
+        <br>#
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-align-self-start">
+        ion-col [start]
+      </ion-col>
+      <ion-col class="ion-align-self-center">
+        ion-col [center]
+      </ion-col>
+      <ion-col class="ion-align-self-end">
+        ion-col [end]
+      </ion-col>
+      <ion-col>
+        ion-col
+        <br>#
+        <br>#
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-start">
+      <ion-col>
+        [start] ion-col
+      </ion-col>
+      <ion-col>
+        [start] ion-col
+      </ion-col>
+      <ion-col class="ion-align-self-end">
+        [start] ion-col [end]
+      </ion-col>
+      <ion-col>
+        ion-col
+        <br>#
+        <br>#
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-center">
+      <ion-col>
+        [center] ion-col
+      </ion-col>
+      <ion-col>
+        [center] ion-col
+      </ion-col>
+      <ion-col>
+        [center] ion-col
+      </ion-col>
+      <ion-col>
+        ion-col
+        <br>#
+        <br>#
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-end">
+      <ion-col>
+        [end] ion-col
+      </ion-col>
+      <ion-col class="ion-align-self-start">
+        [end] ion-col [start]
+      </ion-col>
+      <ion-col>
+        [end] ion-col
+      </ion-col>
+      <ion-col>
+        ion-col
+        <br>#
+        <br>#
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" size-sm>
+        ion-col [size="12"] [size-sm]
+      </ion-col>
+      <ion-col size="12" size-sm>
+        ion-col [size="12"] [size-sm]
+      </ion-col>
+      <ion-col size="12" size-sm>
+        ion-col [size="12"] [size-sm]
+      </ion-col>
+      <ion-col size="12" size-sm>
+        ion-col [size="12"] [size-sm]
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" size-md>
+        ion-col [size="12"] [size-md]
+      </ion-col>
+      <ion-col size="12" size-md>
+        ion-col [size="12"] [size-md]
+      </ion-col>
+      <ion-col size="12" size-md>
+        ion-col [size="12"] [size-md]
+      </ion-col>
+      <ion-col size="12" size-md>
+        ion-col [size="12"] [size-md]
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6" size-lg offset="3">
+        ion-col [size="6"] [size-lg] [offset="3"]
+      </ion-col>
+      <ion-col size="3" size-lg>
+        ion-col [size="3"] [size-lg]
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </template>
+
 
 <style lang="css">
 
 </style>
 
 <script lang="ts">
+import {
+    IonPage,
+    IonHeader,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardSubtitle,
+    IonGrid,
+    IonRow,
+    IonCol
 
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/vue';
-import { warning } from 'ionicons/icons';
-import { logOut } from 'ionicons/icons';
-import ExploreContainer from '@/components/ExploreContainer.vue';
-import {mapActions} from "vuex";
-import { useRouter } from 'vue-router';
+} from '@ionic/vue';
+
+// import 'vuetify/dist/vuetify.min.css'
+import {
+    ellipsisHorizontal,
+    ellipsisVertical,
+    helpCircle,
+    personCircle,
+    search,
+    star,
+    homeOutline,
+    appsSharp
+} from 'ionicons/icons';
+
+
+import Comment from "../components/comment/Comment.vue";
+import StaticListEx from "../components/StaticListEx.vue";
+
+import {
+
+    useRouter
+} from 'vue-router';
 import ClippedHeader from './ClippedHeader.vue';
-
-export default  {
-  name: 'Feed',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, ClippedHeader},
-  data() {
-    return {
-      msg: "Injecting data on load, nice!"
-    }
-  },
-  setup() {
-    const router = useRouter();
-    return {
-      router,
-      logOut,
-      warning
-    };
-  },
-  
-  // methods: {
-  //   ...mapActions("auth", ["signOut"]),
-  //   ...mapActions("home", ["loadSecretArea"]),
-  //   async handleSignOut() {
-  //     await this.signOut().then(() => {
-  //       this.router.push("/login");
-  //     });
-  //   },
-  //   async loadHomeData() {
-  //     await this.loadSecretArea().then((res: any) => {
-  //       this.msg = res.data;
-  //     });
-  //   },
-  //   ionViewWillEnter() {
-  //     this.loadHomeData();
-  //   }
-  // }
-}
 </script>

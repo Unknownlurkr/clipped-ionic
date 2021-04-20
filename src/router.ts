@@ -23,7 +23,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '',
-        redirect: '/tabs/feed',
+        redirect: '/tabs/Feed',
       },
       {
         path: 'Photos',
@@ -36,7 +36,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'Feed',
         component: () => import('@/views/Feed.vue'),
-        meta: { requiresAuth: true} 
+        meta: { requiresAuth: false} 
       },
       {
         path: 'Welcome',
@@ -125,9 +125,9 @@ router.beforeEach((to, from, next) => {
     //  else if (to.meta.requiresAuth && !hasUser()) {
     //   next("/login");
     // } 
-    else if (to.fullPath.includes("/tabs/feed") && !hasUser()) {      
-      next("/tabs/welcome");
-    }
+    //else if (to.fullPath.includes("/tabs/feed") && !hasUser()) {      
+     // next("/tabs/welcome");
+    //}
      else {
       next();
     }
